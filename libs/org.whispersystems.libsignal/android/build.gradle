@@ -19,7 +19,6 @@ group            = group_info
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "25.0.2"
 
     sourceSets {
         androidTest {

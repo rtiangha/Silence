@@ -26,7 +26,6 @@ group   = "org.whispersystems"
 
 android {
     compileSdkVersion 21
-    buildToolsVersion '25.0.2'
 
     defaultConfig {
         minSdkVersion 7
