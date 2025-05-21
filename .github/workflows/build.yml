@@ -57,11 +57,11 @@ jobs:
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
           packages: zip unzip python3 ccache apksigner && sudo apt-get clean
-      - name: Install JDK 8 
+      - name: Install JDK 11 
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '8'
+          java-version: '11'
           cache: 'gradle'
           check-latest: true
       - name: Install Android NDK r17c
@@ -72,7 +72,7 @@ jobs:
           link-to-sdk: true
       - name: Build
         run: |
-          ANDROID_NDK_HOME=${{ steps.setup-ndk.outputs.ndk-path }} JAVA_HOME=$JAVA_HOME_8_X64 ./gradlew assembleRelease
+          ANDROID_NDK_HOME=${{ steps.setup-ndk.outputs.ndk-path }} JAVA_HOME=$JAVA_HOME_11_X64 ./gradlew assembleRelease
           mv build/outputs/apk/release/Silence-release-unsigned.apk build/outputs/apk/release/Silence-release.apk
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
