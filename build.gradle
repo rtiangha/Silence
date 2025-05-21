@@ -125,6 +125,8 @@ android {
     buildToolsVersion '27.0.0'
     useLibrary 'org.apache.http.legacy'
 
+    ndkVersion "17.2.4988734"
+
     defaultConfig {
         versionCode 212
         versionName "0.15.16"
