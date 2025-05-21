@@ -25,11 +25,11 @@ version = "1.0.2"
 group   = "org.whispersystems"
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 27
 
     defaultConfig {
-        minSdkVersion 7
-        targetSdkVersion 19
+        minSdkVersion 14
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
