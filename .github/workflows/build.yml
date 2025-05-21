@@ -68,12 +68,6 @@ jobs:
         run: |
           JAVA_HOME=$JAVA_HOME_8_X64 ./gradlew assembleRelease
           mv build/outputs/apk/release/Silence-release-unsigned.apk build/outputs/apk/release/Silence-release.apk
-        env:
-          DROID_KEYSTORE_B64: ${{ secrets.DROID_KEYSTORE_B64 }}
-          DROID_KEY_ALIAS: ${{ secrets.DROID_KEY_ALIAS }}
-          DROID_KEYSTORE_PASS: ${{ secrets.DROID_KEYSTORE_PASS }}
-          DROID_KEY_PASS: ${{ secrets.DROID_KEY_PASS }}
-          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Sign app APK
         uses: r0adkll/sign-android-release@v1
         id: sign_app
