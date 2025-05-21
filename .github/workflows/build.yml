@@ -64,10 +64,18 @@ jobs:
           java-version: '8'
           cache: 'gradle'
           check-latest: true
+      - name: Install Android NDK r17c
+        uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r17c
+          link-to-sdk: true
       - name: Build
         run: |
-          JAVA_HOME=$JAVA_HOME_8_X64 ./gradlew assembleRelease
+          ANDROID_NDK_HOME=${{ steps.setup-ndk.outputs.ndk-path }} JAVA_HOME=$JAVA_HOME_8_X64 ./gradlew assembleRelease
           mv build/outputs/apk/release/Silence-release-unsigned.apk build/outputs/apk/release/Silence-release.apk
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Sign app APK
         uses: r0adkll/sign-android-release@v1
         id: sign_app
