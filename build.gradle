@@ -124,7 +124,7 @@ android {
     compileSdkVersion 27
     useLibrary 'org.apache.http.legacy'
 
-    ndkVersion "26.1.10119114"
+    ndkVersion "27.2.12479018"
 
     defaultConfig {
         versionCode 212
