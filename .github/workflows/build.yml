@@ -64,11 +64,11 @@ jobs:
           java-version: '11'
           cache: 'gradle'
           check-latest: true
-      - name: Install Android NDK r21e
+      - name: Install Android NDK r22b
         uses: nttld/setup-ndk@v1
         id: setup-ndk
         with:
-          ndk-version: r21e
+          ndk-version: r22b
           link-to-sdk: true
       - name: Build
         run: |
