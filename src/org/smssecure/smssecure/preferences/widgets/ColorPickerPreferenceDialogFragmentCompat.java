@@ -4,7 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.preference.PreferenceDialogFragmentCompat;
+import androidx.preference.PreferenceDialogFragmentCompat;
 
 import com.takisoft.colorpicker.ColorPickerDialog;
 import com.takisoft.colorpicker.OnColorSelectedListener;

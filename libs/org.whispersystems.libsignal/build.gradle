@@ -3,11 +3,9 @@ subprojects {
     ext.group_info         = "org.whispersystems"
     ext.curve25519_version = "0.5.0"
 
-    if (JavaVersion.current().isJava8Compatible()) {
-        allprojects {
-            tasks.withType(Javadoc) {
-                options.addStringOption('Xdoclint:none', '-quiet')
-            }
+    tasks.withType(Javadoc).configureEach {
+        if (JavaVersion.current().isJava8Compatible()) {
+            options.addStringOption('Xdoclint:none', '-quiet')
         }
     }
 }

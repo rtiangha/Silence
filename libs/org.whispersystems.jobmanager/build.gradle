@@ -1,35 +1,26 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+    id 'signing'
+}
+
 buildscript {
     repositories {
-        maven {
-            url "https://repo1.maven.org/maven2"
-        }
-        // Required for the Gradle plugin
+        mavenCentral()
         google()
-        jcenter()
+        gradlePluginPortal()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.2'
     }
 }
 
-repositories {
-    google()
-    jcenter()
-}
-
-apply plugin: 'com.android.library'
-apply plugin: 'maven'
-apply plugin: 'signing'
-
-version = "1.0.2"
-group   = "org.whispersystems"
-
 android {
-    compileSdkVersion 27
+    compileSdkVersion 31
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 27
+        minSdkVersion 21
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
     }
@@ -40,55 +31,71 @@ android {
     }
 }
 
-signing {
-    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
-    sign configurations.archives
+version = "1.0.2"
+group   = "org.whispersystems"
+
+repositories {
+    mavenCentral()
+    google()
 }
 
-uploadArchives {
-    configuration = configurations.archives
-    repositories.mavenDeployer {
-        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+// New Maven publication configuration
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = group
+            artifactId = 'jobmanager'
+            version = version
+            
+            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
 
-        repository(url: sonatypeRepo) {
-            authentication(userName: whisperSonatypeUsername, password: whisperSonatypePassword)
-        }
+            pom {
+                name = 'jobmanager'
+                packaging = 'aar'
+                description = 'Job Manager for Android'
+                url = 'https://github.com/WhisperSystems/jobmanager'
 
-        pom.project {
-            name 'jobmanager'
-            packaging 'aar'
-            description 'Job Manager for Android'
-            url 'https://github.com/WhisperSystems/jobmanager'
-
-            scm {
-                url 'scm:git@github.com:WhisperSystems/jobmanager.git'
-                connection 'scm:git@github.com:WhisperSystems/jobmanager.git'
-                developerConnection 'scm:git@github.com:WhisperSystems/jobmanager.git'
-            }
-
-            licenses {
-                license {
-                    name 'GPLv3'
-                    url 'https://www.gnu.org/licenses/gpl-3.0.txt'
-                    distribution 'repo'
+                scm {
+                    url = 'scm:git@github.com:WhisperSystems/jobmanager.git'
+                    connection = 'scm:git@github.com:WhisperSystems/jobmanager.git'
+                    developerConnection = 'scm:git@github.com:WhisperSystems/jobmanager.git'
                 }
-            }
 
-            developers {
-                developer {
-                    name 'Moxie Marlinspike'
+                licenses {
+                    license {
+                        name = 'GPLv3'
+                        url = 'https://www.gnu.org/licenses/gpl-3.0.txt'
+                        distribution = 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        name = 'Moxie Marlinspike'
+                    }
                 }
             }
         }
     }
-}
 
-task installArchives(type: Upload) {
-    description "Installs the artifacts to the local Maven repository."
-    configuration = configurations['archives']
     repositories {
-        mavenDeployer {
-            repository url: "file://${System.properties['user.home']}/.m2/repository"
+        maven {
+            url = sonatypeRepo
+            credentials {
+                username = whisperSonatypeUsername
+                password = whisperSonatypePassword
+            }
         }
     }
+}
+
+signing {
+    sign publishing.publications.release
+}
+
+// Local install task replacement
+task installArchives(type: Copy) {
+    dependsOn assemble
+    from("$buildDir/outputs/aar/") 
+    into("${System.properties['user.home']}/.m2/repository/${project.group.replace('.', '/')}/${project.name}/${version}")
 }

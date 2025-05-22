@@ -3,7 +3,7 @@ package org.smssecure.smssecure;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 
 import java.util.concurrent.TimeUnit;
 
