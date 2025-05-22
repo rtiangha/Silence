@@ -64,11 +64,11 @@ jobs:
           java-version: '11'
           cache: 'gradle'
           check-latest: true
-      - name: Install Android NDK r27c
+      - name: Install Android NDK r28b
         uses: nttld/setup-ndk@v1
         id: setup-ndk
         with:
-          ndk-version: r27c
+          ndk-version: r28b
           link-to-sdk: true
       - name: Build
         run: |
