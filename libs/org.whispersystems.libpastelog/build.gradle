@@ -1,7 +1,8 @@
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
+        gradlePluginPortal()
     }
 
     dependencies {
@@ -11,8 +12,9 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
+        gradlePluginPortal()
     }
 }
 
@@ -20,12 +22,10 @@ subprojects {
     ext.version_number     = "1.1.2"
     ext.group_info         = "org.whispersystems"
 
-    if (JavaVersion.current().isJava8Compatible()) {
-        allprojects {
-            tasks.withType(Javadoc) {
-                options.addStringOption('Xdoclint:none', '-quiet')
-            }
+    // Updated Java compatibility check and Javadoc configuration
+    tasks.withType(Javadoc) {
+        if (JavaVersion.current().isJava8Compatible()) {
+            options.addStringOption('Xdoclint:none', '-quiet')
         }
     }
 }
-
