@@ -18,7 +18,7 @@ version          = version_number
 group            = group_info
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 33 
 
     sourceSets {
         androidTest {
