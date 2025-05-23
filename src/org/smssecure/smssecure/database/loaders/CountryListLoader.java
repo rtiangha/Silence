@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import android.content.Context;
-import androidx.loader.content.AsyncTaskLoader
+import androidx.loader.content.AsyncTaskLoader;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 
