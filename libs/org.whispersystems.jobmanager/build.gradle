@@ -30,7 +30,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    namespace 'org.whispersystems.jobmanager'
+    namespace 'org.whispersystems.jobqueue'
 }
 
 version = "1.0.2"
