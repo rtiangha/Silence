@@ -1,7 +1,6 @@
 package org.smssecure.smssecure.events;
 
-
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.smssecure.smssecure.attachments.Attachment;
 
