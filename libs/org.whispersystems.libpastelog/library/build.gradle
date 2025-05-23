@@ -25,6 +25,8 @@ android {
             java.srcDirs = ['src']
         }
     }
+
+    namespace 'org.whispersystems.libpastelog'
 }
 
 version = version_number
