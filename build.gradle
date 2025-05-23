@@ -181,7 +181,7 @@ android {
         abortOnError false
     }
 
-    namespace 'dev.silence.git'
+    namespace 'org.smssecure.smssecure'
 }
 
 tasks.whenTaskAdded { task ->
