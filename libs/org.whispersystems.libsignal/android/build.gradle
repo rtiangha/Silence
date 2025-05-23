@@ -1,96 +1,109 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.10.0'
-    }
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+    id 'signing'
 }
 
-apply plugin: 'com.android.library'
-apply plugin: 'maven'
-apply plugin: 'signing'
-
-archivesBaseName = "signal-protocol-android"
-version          = version_number
-group            = group_info
-
 android {
-    compileSdkVersion 33 
+    compileSdkVersion 33
 
+    // Modern source set configuration
     sourceSets {
-        androidTest {
-            java.srcDirs = ['src/androidTest/java', project(':tests').file('src/test/java')]
+        androidTest.java.srcDirs += ['src/androidTest/java', project(':tests').file('src/test/java')]
+    }
+
+    // Default config for library variants
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
         }
     }
 }
 
+group = group_info
+version = version_number
+archivesBaseName = "signal-protocol-android"
+
 repositories {
     google()
-    jcenter()
     mavenCentral()
     mavenLocal()
 }
 
 dependencies {
-    compile "org.whispersystems:curve25519-android:${curve25519_version}"
-    compile (project(':java')) {
+    implementation "org.whispersystems:curve25519-android:${curve25519_version}"
+    implementation(project(':java')) {
         exclude group: 'org.whispersystems', module: 'curve25519-java'
     }
 }
 
-signing {
-    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
-    sign configurations.archives
-}
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = group
+            artifactId = archivesBaseName
+            version = version
 
-uploadArchives {
-    configuration = configurations.archives
-    repositories.mavenDeployer {
-        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-        repository(url: sonatypeRepo) {
-            authentication(userName: whisperSonatypeUsername, password: whisperSonatypePassword)
-        }
-
-        pom.project {
-            name 'signal-protocol-android'
-            packaging 'aar'
-            description 'Signal Protocol cryptography library for Android'
-            url 'https://github.com/WhisperSystems/libsignal-android'
-
-            scm {
-                url 'scm:git@github.com:WhisperSystems/libsignal-android.git'
-                connection 'scm:git@github.com:WhisperSystems/libsignal-android.git'
-                developerConnection 'scm:git@github.com:WhisperSystems/libsignal-android.git'
+            afterEvaluate {
+                artifact bundleReleaseAar
+                artifact androidSourcesJar
+                artifact androidJavadocJar
             }
 
-            licenses {
-                license {
-                    name 'GPLv3'
-                    url 'https://www.gnu.org/licenses/gpl-3.0.txt'
-                    distribution 'repo'
+            pom {
+                name = 'signal-protocol-android'
+                packaging = 'aar'
+                description = 'Signal Protocol cryptography library for Android'
+                url = 'https://github.com/WhisperSystems/libsignal-android'
+
+                scm {
+                    url = 'scm:git@github.com:WhisperSystems/libsignal-android.git'
+                    connection = 'scm:git@github.com:WhisperSystems/libsignal-android.git'
+                    developerConnection = 'scm:git@github.com:WhisperSystems/libsignal-android.git'
                 }
-            }
 
-            developers {
-                developer {
-                    name 'Moxie Marlinspike'
+                licenses {
+                    license {
+                        name = 'GPLv3'
+                        url = 'https://www.gnu.org/licenses/gpl-3.0.txt'
+                        distribution = 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        name = 'Moxie Marlinspike'
+                    }
                 }
             }
         }
     }
-}
 
-task installArchives(type: Upload) {
-    description "Installs the artifacts to the local Maven repository."
-    configuration = configurations['archives']
     repositories {
-        mavenDeployer {
-            repository url: "file://${System.properties['user.home']}/.m2/repository"
+        maven {
+            url = findProperty('sonatypeRepo') ?: ''
+            credentials {
+                username = findProperty('whisperSonatypeUsername') ?: ''
+                password = findProperty('whisperSonatypePassword') ?: ''
+            }
         }
     }
+}
+
+signing {
+    sign publishing.publications.release
+}
+
+// Javadoc task configuration
+task androidJavadocJar(type: Jar, dependsOn: dokkaJavadoc) {
+    archiveClassifier.set('javadoc')
+    from dokkaJavadoc.outputDirectory
+}
+
+// Local installation task
+task installArchives(type: Copy) {
+    dependsOn publishToMavenLocal
+    from("$buildDir/outputs/aar/${project.name}-release.aar")
+    into("${System.getProperty('user.home')}/.m2/repository/${project.group.replace('.', '/')/${archivesBaseName}/${version}")
 }
