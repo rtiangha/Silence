@@ -88,5 +88,5 @@ signing {
 task installArchives(type: Copy) {
     dependsOn publishToMavenLocal
     from("${buildDir}/publications/mavenJava")
-    into("${System.getProperty('user.home')}/.m2/repository/${project.group.replace('.', '/')/${archivesBaseName}/${version}")
+    into("${System.getProperty('user.home')}/.m2/repository/${project.group.replace('.', '/')}/${archivesBaseName}/${version}")
 }
