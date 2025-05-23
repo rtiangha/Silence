@@ -38,63 +38,6 @@ dependencies {
     }
 }
 
-publishing {
-    publications {
-        release(MavenPublication) {
-            groupId = group
-            artifactId = archivesBaseName
-            version = version
-
-            afterEvaluate {
-                artifact bundleReleaseAar
-                artifact androidSourcesJar
-                artifact androidJavadocJar
-            }
-
-            pom {
-                name = 'signal-protocol-android'
-                packaging = 'aar'
-                description = 'Signal Protocol cryptography library for Android'
-                url = 'https://github.com/WhisperSystems/libsignal-android'
-
-                scm {
-                    url = 'scm:git@github.com:WhisperSystems/libsignal-android.git'
-                    connection = 'scm:git@github.com:WhisperSystems/libsignal-android.git'
-                    developerConnection = 'scm:git@github.com:WhisperSystems/libsignal-android.git'
-                }
-
-                licenses {
-                    license {
-                        name = 'GPLv3'
-                        url = 'https://www.gnu.org/licenses/gpl-3.0.txt'
-                        distribution = 'repo'
-                    }
-                }
-
-                developers {
-                    developer {
-                        name = 'Moxie Marlinspike'
-                    }
-                }
-            }
-        }
-    }
-
-    repositories {
-        maven {
-            url = findProperty('sonatypeRepo') ?: ''
-            credentials {
-                username = findProperty('whisperSonatypeUsername') ?: ''
-                password = findProperty('whisperSonatypePassword') ?: ''
-            }
-        }
-    }
-}
-
-signing {
-    sign publishing.publications.release
-}
-
 // Javadoc task configuration
 task androidJavadocJar(type: Jar, dependsOn: dokkaJavadoc) {
     archiveClassifier.set('javadoc')
