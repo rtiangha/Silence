@@ -38,12 +38,6 @@ dependencies {
     }
 }
 
-// Javadoc task configuration
-task androidJavadocJar(type: Jar, dependsOn: dokkaJavadoc) {
-    archiveClassifier.set('javadoc')
-    from dokkaJavadoc.outputDirectory
-}
-
 // Local installation task
 task installArchives(type: Copy) {
     dependsOn publishToMavenLocal
