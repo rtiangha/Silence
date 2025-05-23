@@ -19,6 +19,8 @@ android {
             withJavadocJar()
         }
     }
+
+    namespace 'org.whispersystems.libsignal'
 }
 
 group = group_info
