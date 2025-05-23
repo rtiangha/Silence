@@ -43,10 +43,6 @@ repositories {
     gradlePluginPortal()
 }
 
-signing {
-    sign publishing.publications.release
-}
-
 task androidJavadocJar(type: Jar, dependsOn: dokkaJavadoc) {
     archiveClassifier.set('javadoc')
     from dokkaJavadoc.outputDirectory
