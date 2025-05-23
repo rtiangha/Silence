@@ -105,5 +105,5 @@ task androidJavadocJar(type: Jar, dependsOn: dokkaJavadoc) {
 task installArchives(type: Copy) {
     dependsOn publishToMavenLocal
     from("$buildDir/outputs/aar/${project.name}-release.aar")
-    into("${System.getProperty('user.home')}/.m2/repository/${project.group.replace('.', '/')/${archivesBaseName}/${version}")
+    into("${System.getProperty('user.home')}/.m2/repository/${project.group.replace('.', '/')}/${archivesBaseName}/${version}")
 }
