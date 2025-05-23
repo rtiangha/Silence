@@ -1,5 +1,5 @@
 apply plugin: 'java'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
 sourceCompatibility = 1.7
@@ -42,39 +42,43 @@ signing {
     sign configurations.archives
 }
 
-uploadArchives {
-    configuration = configurations.archives
-    repositories.mavenDeployer {
-        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            pom {
+                name.set('signal-protocol-java')
+                description.set('Signal Protocol cryptography library for Java')
+                url.set('https://github.com/WhisperSystems/libsignal-android')
 
-        repository(url: sonatypeRepo) {
-            authentication(userName: whisperSonatypeUsername, password: whisperSonatypePassword)
+                scm {
+                    url.set('scm:git@github.com:WhisperSystems/libsignal-android.git')
+                    connection.set('scm:git@github.com:WhisperSystems/libsignal-android.git')
+                    developerConnection.set('scm:git@github.com:WhisperSystems/libsignal-android.git')
+                }
+
+                licenses {
+                    license {
+                        name.set('GPLv3')
+                        url.set('https://www.gnu.org/licenses/gpl-3.0.txt')
+                        distribution.set('repo')
+                    }
+                }
+
+                developers {
+                    developer {
+                        name.set('Moxie Marlinspike')
+                    }
+                }
+            }
         }
-
-        pom.project {
-            name 'signal-protocol-java'
-            packaging 'jar'
-            description 'Signal Protocol cryptography library for Java'
-            url 'https://github.com/WhisperSystems/libsignal-android'
-
-            scm {
-                url 'scm:git@github.com:WhisperSystems/libsignal-android.git'
-                connection 'scm:git@github.com:WhisperSystems/libsignal-android.git'
-                developerConnection 'scm:git@github.com:WhisperSystems/libsignal-android.git'
-            }
-
-            licenses {
-                license {
-                    name 'GPLv3'
-                    url 'https://www.gnu.org/licenses/gpl-3.0.txt'
-                    distribution 'repo'
-                }
-            }
-
-            developers {
-                developer {
-                    name 'Moxie Marlinspike'
-                }
+    }
+    repositories {
+        maven {
+            url = sonatypeRepo
+            credentials {
+                username = whisperSonatypeUsername
+                password = whisperSonatypePassword
             }
         }
     }
