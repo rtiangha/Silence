@@ -50,8 +50,8 @@ publishing {
 
             afterEvaluate {
                 artifact bundleReleaseAar
-                artifact androidSourcesJar(MavenPublication)
-                artifact androidJavadocJar
+                artifact(tasks.named('androidSourcesJar'))
+                artifact(tasks.named('androidJavadocJar'))
             }
 
             pom {
@@ -102,6 +102,11 @@ signing {
 task androidJavadocJar(type: Jar, dependsOn: dokkaJavadoc) {
     archiveClassifier.set('javadoc')
     from dokkaJavadoc.outputDirectory
+}
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
 }
 
 // Local installation task
