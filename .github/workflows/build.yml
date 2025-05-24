@@ -73,6 +73,7 @@ jobs:
       - name: Build
         run: |
           ANDROID_NDK_HOME=${{ steps.setup-ndk.outputs.ndk-path }} JAVA_HOME=$JAVA_HOME_17_X64 ./gradlew assembleRelease
+          ANDROID_NDK_HOME=${{ steps.setup-ndk.outputs.ndk-path }} JAVA_HOME=$JAVA_HOME_17_X64 ./gradlew bundleRelease
           mv build/outputs/apk/release/Silence-release-unsigned.apk build/outputs/apk/release/Silence-release.apk
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
