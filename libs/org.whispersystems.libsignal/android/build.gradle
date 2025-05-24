@@ -50,7 +50,7 @@ publishing {
 
             afterEvaluate {
                 artifact bundleReleaseAar
-                artifact androidSourcesJar
+                artifact androidSourcesJar(MavenPublication)
                 artifact androidJavadocJar
             }
 
