@@ -34,7 +34,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import org.junit.assert;
+import org.junit.Assert;
 
 import org.smssecure.smssecure.MediaPreviewActivity;
 import org.smssecure.smssecure.R;
