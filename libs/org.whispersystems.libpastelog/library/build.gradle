@@ -96,7 +96,7 @@ publishing {
 
     repositories {
         maven {
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            url = "file://${System.properties['user.home']}/.m2/repository" 
             credentials {
                 username = findProperty('whisperSonatypeUsername') ?: ""
                 password = findProperty('whisperSonatypePassword') ?: ""
