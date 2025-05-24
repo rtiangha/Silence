@@ -52,6 +52,59 @@ repositories {
     gradlePluginPortal()
 }
 
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = group
+            artifactId = archivesBaseName
+            version = version
+
+            afterEvaluate {
+                artifact bundleReleaseAar
+                artifact androidSourcesJar
+                artifact androidJavadocJar
+            }
+
+            pom {
+                name = 'libpastelog'
+                packaging = 'aar'
+                description = 'Easily allow users to post debug logs online'
+                url = 'https://github.com/signalapp/libpastelog'
+
+                scm {
+                    url = 'scm:git@github.com:signalapp/libpastelog.git'
+                    connection = 'scm:git@github.com:signalapp/libpastelog.git'
+                    developerConnection = 'scm:git@github.com:signalapp/libpastelog.git'
+                }
+
+                licenses {
+                    license {
+                        name = 'GPLv3'
+                        url = 'https://www.gnu.org/licenses/gpl-3.0.txt'
+                        distribution = 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        name = 'Moxie Marlinspike'
+                    }
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username = findProperty('whisperSonatypeUsername') ?: ""
+                password = findProperty('whisperSonatypePassword') ?: ""
+            }
+        }
+    }
+}
+
 signing {
     sign publishing.publications.release
 }
