@@ -27,6 +27,12 @@ android {
         }
     }
 
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
     namespace 'org.whispersystems.libpastelog'
 }
 
