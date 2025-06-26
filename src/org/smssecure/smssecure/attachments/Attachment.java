@@ -1,5 +1,6 @@
 package org.smssecure.smssecure.attachments;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,12 +23,12 @@ public abstract class Attachment {
   @Nullable
   private final String relay;
 
+  // XXX - This shouldn't be here.
   @Nullable
-  private final byte[] digest;
+  private Bitmap thumbnail;
 
   public Attachment(@NonNull String contentType, int transferState, long size,
-                    @Nullable String location, @Nullable String key, @Nullable String relay,
-                    @Nullable byte[] digest)
+                    @Nullable String location, @Nullable String key, @Nullable String relay)
   {
     this.contentType   = contentType;
     this.transferState = transferState;
@@ -35,7 +36,6 @@ public abstract class Attachment {
     this.location      = location;
     this.key           = key;
     this.relay         = relay;
-    this.digest        = digest;
   }
 
   @Nullable
@@ -77,8 +77,12 @@ public abstract class Attachment {
     return relay;
   }
 
+  public void setThumbnail(@Nullable Bitmap thumbnail) {
+    this.thumbnail = thumbnail;
+  }
+
   @Nullable
-  public byte[] getDigest() {
-    return digest;
+  public Bitmap getThumbnail() {
+    return thumbnail;
   }
 }

@@ -7,8 +7,7 @@ fi
 
 for file in "$@"; do
     commit=$(echo ${file##*/} | sed 's/.patch$//')
-    sed -i -e 's/org\/thoughtcrime\/securesms/org\/smssecure\/smssecure/' \
-           -e 's/org.thoughtcrime.securesms/org.smssecure.smssecure/g' \
+    sed -i -e 's/org.thoughtcrime.securesms/org.smssecure.smssecure/g' \
            -e 's/org.thoughtcrime.provider.securesms/org.smssecure.provider.smssecure/g' \
            -e 's/org.smssecure.smssecure.util.TextSecure/org.smssecure.smssecure.util.Silence/g' \
            -e 's/org.thoughtcrime.redphone.util/org.smssecure.smssecure.util/g' \
@@ -33,10 +32,10 @@ for file in "$@"; do
            -e 's/TextSecureIdentityKeyStore/SilenceIdentityKeyStore/g' \
            -e 's/@color\/signal/@color\/silence/g' \
            -e 's/@color\/textsecure/@color\/silence/g' \
-           -e 's/^[Ff]ixes #/Fixes https:\/\/github.com\/signalapp\/Signal-Android\/issues\//g' \
-           -e 's/^[Cc]loses #/Closes https:\/\/github.com\/signalapp\/Signal-Android\/pull\//g' \
+           -e 's/^[Ff]ixes #/Fixes https:\/\/github.com\/WhisperSystems\/Signal-Android\/issues\//g' \
+           -e 's/^[Cc]loses #/Closes https:\/\/github.com\/WhisperSystems\/Signal-Android\/pull\//g' \
            -e 's/^SingleRecipientNotificationBuilder_new_textsecure_message/SingleRecipientNotificationBuilder_new_smssecure_message/g' \
            -e 's/src\/org.smssecure.smssecure.util.SilencePreferences.java/src\/org\/smssecure\/smssecure\/util\/SilencePreferences.java/g' \
-           -e "0,/^---/s//\nUpstream commit: https:\/\/github.com\/signalapp\/Signal-Android\/commit\/$commit\n---/" \
+           -e "0,/^---/s//\nUpstream commit: https:\/\/github.com\/WhisperSystems\/Signal-Android\/commit\/$commit\n---/" \
            "$file"
 done

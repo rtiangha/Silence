@@ -26,6 +26,7 @@ public class ChatsPreferenceFragment extends CorrectedPreferenceFragment {
   @Override
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
+    addPreferencesFromResource(R.xml.preferences_chats);
 
     findPreference(SilencePreferences.THREAD_TRIM_NOW)
         .setOnPreferenceClickListener(new TrimNowClickListener());

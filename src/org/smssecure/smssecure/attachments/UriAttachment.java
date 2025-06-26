@@ -1,32 +1,33 @@
 package org.smssecure.smssecure.attachments;
 
+import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import org.smssecure.smssecure.crypto.MasterSecret;
+import org.smssecure.smssecure.util.MediaUtil;
+import org.whispersystems.libsignal.util.guava.Optional;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class UriAttachment extends Attachment {
 
-  private final @NonNull  Uri dataUri;
-  private final @Nullable Uri thumbnailUri;
+  private final @NonNull Uri dataUri;
+  private final @NonNull Uri thumbnailUri;
+
+  public UriAttachment(@NonNull Uri uri, @NonNull String contentType, int transferState) {
+    this(uri, contentType, transferState, 0);
+  }
 
   public UriAttachment(@NonNull Uri uri, @NonNull String contentType, int transferState, long size) {
-    this(uri, uri, contentType, transferState, size, null);
+    this(uri, uri, contentType, transferState, size);
   }
 
-  public UriAttachment(@NonNull Uri uri, @NonNull String contentType, int transferState, long size, byte[] digest) {
-    this(uri, uri, contentType, transferState, size, digest);
-  }
-
-  public UriAttachment(@NonNull Uri dataUri, @Nullable Uri thumbnailUri,
+  public UriAttachment(@NonNull Uri dataUri, @NonNull Uri thumbnailUri,
                        @NonNull String contentType, int transferState, long size)
   {
-    this(dataUri, thumbnailUri, contentType, transferState, size, null);
-  }
-
-  public UriAttachment(@NonNull Uri dataUri, @Nullable Uri thumbnailUri,
-                       @NonNull String contentType, int transferState, long size, byte[] digest)
-  {
-    super(contentType, transferState, size, null, null, null, digest);
+    super(contentType, transferState, size, null, null, null);
     this.dataUri      = dataUri;
     this.thumbnailUri = thumbnailUri;
   }
@@ -38,7 +39,7 @@ public class UriAttachment extends Attachment {
   }
 
   @Override
-  @Nullable
+  @NonNull
   public Uri getThumbnailUri() {
     return thumbnailUri;
   }

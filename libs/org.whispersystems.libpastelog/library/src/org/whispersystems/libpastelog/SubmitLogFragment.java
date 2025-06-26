@@ -55,9 +55,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
+import java.util.Iterator;
 import java.util.Locale;
 
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -84,7 +86,7 @@ public class SubmitLogFragment extends Fragment {
   private String   hackSavedLogUrl;
   private boolean  emailActivityWasStarted = false;
 
-  private static final String API_ENDPOINT = "https://paste.silence.dev";
+  private static final String API_ENDPOINT = "https://debuglogs.org";
 
   private OnLogSubmittedListener mListener;
 
@@ -339,29 +341,39 @@ public class SubmitLogFragment extends Fragment {
     @Override
     protected String doInBackground(Void... voids) {
       try {
-        OkHttpClient client = new OkHttpClient();
-        RequestBody  body   = RequestBody.create(MediaType.parse("text/plain; charset=utf-8"), paste.getBytes());
+        OkHttpClient client   = new OkHttpClient.Builder().build();
+        Response     response = client.newCall(new Request.Builder().url(API_ENDPOINT).get().build()).execute();
+        ResponseBody body     = response.body();
 
-        Request request = new Request.Builder()
-                                     .url(API_ENDPOINT + "/documents")
-                                     .post(body)
-                                     .build();
+        if (!response.isSuccessful() || body == null) {
+          throw new IOException("Unsuccessful response: " + response);
+        }
 
-        Response postResponse = client.newCall(request).execute();
+        JSONObject            json   = new JSONObject(body.string());
+        String                url    = json.getString("url");
+        JSONObject            fields = json.getJSONObject("fields");
+        String                item   = fields.getString("key");
+        MultipartBody.Builder post   = new MultipartBody.Builder();
+        Iterator<String>      keys   = fields.keys();
 
-        if (!postResponse.isSuccessful() || postResponse.body() == null) {
+        post.addFormDataPart("Content-Type", "text/plain");
+        
+        while (keys.hasNext()) {
+          String key = keys.next();
+          post.addFormDataPart(key, fields.getString(key));
+        }
+
+        post.addFormDataPart("file", "file", RequestBody.create(MediaType.parse("text/plain"), paste));
+
+        Response postResponse = client.newCall(new Request.Builder().url(url).post(post.build()).build()).execute();
+
+        if (!postResponse.isSuccessful()) {
           throw new IOException("Bad response: " + postResponse);
         }
 
-        JSONObject responseJson = new JSONObject(postResponse.body().string());
-
-        if (responseJson.get("key") == null) {
-          throw new IOException("Bad response: " + postResponse);
-        }
-
-        return API_ENDPOINT + "/" + responseJson.get("key");
+        return API_ENDPOINT + "/" + item;
       } catch (IOException | JSONException e) {
-        Log.w(TAG, e);
+        Log.w("ImageActivity", e);
       }
       return null;
     }

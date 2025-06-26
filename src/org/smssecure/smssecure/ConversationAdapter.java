@@ -39,8 +39,8 @@ import org.smssecure.smssecure.database.DatabaseFactory;
 import org.smssecure.smssecure.database.MmsSmsColumns;
 import org.smssecure.smssecure.database.MmsSmsDatabase;
 import org.smssecure.smssecure.database.SmsDatabase;
+import org.smssecure.smssecure.database.model.MediaMmsMessageRecord;
 import org.smssecure.smssecure.database.model.MessageRecord;
-import org.smssecure.smssecure.database.model.MmsMessageRecord;
 import org.smssecure.smssecure.recipients.Recipients;
 import org.smssecure.smssecure.util.DateUtils;
 import org.smssecure.smssecure.util.LRUCache;
@@ -76,17 +76,14 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 {
 
   private static final int MAX_CACHE_SIZE = 40;
-  private static final String TAG = ConversationAdapter.class.getSimpleName();
   private final Map<String,SoftReference<MessageRecord>> messageRecordCache =
       Collections.synchronizedMap(new LRUCache<String, SoftReference<MessageRecord>>(MAX_CACHE_SIZE));
 
-  private static final int MESSAGE_TYPE_OUTGOING           = 0;
-  private static final int MESSAGE_TYPE_INCOMING           = 1;
-  private static final int MESSAGE_TYPE_UPDATE             = 2;
-  private static final int MESSAGE_TYPE_AUDIO_OUTGOING     = 3;
-  private static final int MESSAGE_TYPE_AUDIO_INCOMING     = 4;
-  private static final int MESSAGE_TYPE_THUMBNAIL_OUTGOING = 5;
-  private static final int MESSAGE_TYPE_THUMBNAIL_INCOMING = 6;
+  private static final int MESSAGE_TYPE_OUTGOING       = 0;
+  private static final int MESSAGE_TYPE_INCOMING       = 1;
+  private static final int MESSAGE_TYPE_UPDATE         = 2;
+  private static final int MESSAGE_TYPE_AUDIO_OUTGOING = 3;
+  private static final int MESSAGE_TYPE_AUDIO_INCOMING = 4;
 
   private final Set<MessageRecord> batchSelected = Collections.synchronizedSet(new HashSet<MessageRecord>());
 
@@ -187,12 +184,10 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     MessageRecord messageRecord = getMessageRecord(cursor);
 
     viewHolder.getView().bind(masterSecret, messageRecord, locale, batchSelected, recipients);
-    Log.w(TAG, "Bind time: " + (System.currentTimeMillis() - start));
   }
 
   @Override
   public ViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
-    long start = System.currentTimeMillis();
     final V itemView = ViewUtil.inflate(inflater, parent, getLayoutForViewType(viewType));
     if (viewType == MESSAGE_TYPE_INCOMING || viewType == MESSAGE_TYPE_OUTGOING) {
       itemView.setOnClickListener(new OnClickListener() {
@@ -209,7 +204,7 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
         }
       });
     }
-    Log.w(TAG, "Inflate time: " + (System.currentTimeMillis() - start));
+
     return new ViewHolder(itemView);
   }
 
@@ -221,10 +216,8 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   private @LayoutRes int getLayoutForViewType(int viewType) {
     switch (viewType) {
       case MESSAGE_TYPE_AUDIO_OUTGOING:
-      case MESSAGE_TYPE_THUMBNAIL_OUTGOING:
       case MESSAGE_TYPE_OUTGOING:        return R.layout.conversation_item_sent;
       case MESSAGE_TYPE_AUDIO_INCOMING:
-      case MESSAGE_TYPE_THUMBNAIL_INCOMING:
       case MESSAGE_TYPE_INCOMING:        return R.layout.conversation_item_received;
       case MESSAGE_TYPE_UPDATE:          return R.layout.conversation_item_update;
       default: throw new IllegalArgumentException("unsupported item view type given to ConversationAdapter");
@@ -240,9 +233,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
     } else if (hasAudio(messageRecord)) {
       if (messageRecord.isOutgoing()) return MESSAGE_TYPE_AUDIO_OUTGOING;
       else                            return MESSAGE_TYPE_AUDIO_INCOMING;
-    } else if (hasThumbnail(messageRecord)) {
-      if (messageRecord.isOutgoing()) return MESSAGE_TYPE_THUMBNAIL_OUTGOING;
-      else                            return MESSAGE_TYPE_THUMBNAIL_INCOMING;
     } else if (messageRecord.isOutgoing()) {
       return MESSAGE_TYPE_OUTGOING;
     } else {
@@ -310,7 +300,9 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
   }
 
   private boolean hasAudio(MessageRecord messageRecord) {
-    return messageRecord.isMms() && ((MmsMessageRecord)messageRecord).getSlideDeck().getAudioSlide() != null;
+    return messageRecord.isMms() &&
+        !messageRecord.isMmsNotification() &&
+        ((MediaMmsMessageRecord)messageRecord).getSlideDeck().getAudioSlide() != null;
   }
 
   @Override
@@ -409,12 +401,6 @@ public class ConversationAdapter <V extends View & BindableConversationItem>
 
       return viewHolder;
     }
-  }
-
-  private boolean hasThumbnail(MessageRecord messageRecord) {
-    return messageRecord.isMms()              &&
-        !messageRecord.isMmsNotification() &&
-        ((MmsMessageRecord)messageRecord).getSlideDeck().getThumbnailSlide() != null;
   }
 
 }

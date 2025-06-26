@@ -1,7 +1,7 @@
 package org.smssecure.smssecure.attachments;
 
 import android.net.Uri;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 
 import org.smssecure.smssecure.mms.PartAuthority;
 
@@ -10,38 +10,27 @@ public class DatabaseAttachment extends Attachment {
   private final AttachmentId attachmentId;
   private final long         mmsId;
   private final boolean      hasData;
-  private final boolean      hasThumbnail;
 
-  public DatabaseAttachment(AttachmentId attachmentId, long mmsId,
-                            boolean hasData, boolean hasThumbnail,
+  public DatabaseAttachment(AttachmentId attachmentId, long mmsId,  boolean hasData,
                             String contentType, int transferProgress, long size,
-                            String location, String key, String relay, byte[] digest)
+                            String location, String key, String relay)
   {
-    super(contentType, transferProgress, size, location, key, relay, digest);
+    super(contentType, transferProgress, size, location, key, relay);
     this.attachmentId = attachmentId;
     this.hasData      = hasData;
-    this.hasThumbnail = hasThumbnail;
     this.mmsId        = mmsId;
   }
 
   @Override
-  @Nullable
+  @NonNull
   public Uri getDataUri() {
-    if (hasData) {
-      return PartAuthority.getAttachmentDataUri(attachmentId);
-    } else {
-      return null;
-    }
+    return PartAuthority.getAttachmentDataUri(attachmentId);
   }
 
   @Override
-  @Nullable
+  @NonNull
   public Uri getThumbnailUri() {
-    if (hasThumbnail) {
-      return PartAuthority.getAttachmentThumbnailUri(attachmentId);
-    } else {
-      return null;
-    }
+    return PartAuthority.getAttachmentThumbnailUri(attachmentId);
   }
 
   public AttachmentId getAttachmentId() {
@@ -66,9 +55,5 @@ public class DatabaseAttachment extends Attachment {
 
   public boolean hasData() {
     return hasData;
-  }
-
-  public boolean hasThumbnail() {
-    return hasThumbnail;
   }
 }

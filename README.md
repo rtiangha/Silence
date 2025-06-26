@@ -1,4 +1,4 @@
-# Silence [![Build Status](https://git.silence.dev/Silence/Silence-Android/badges/master/pipeline.svg)](https://git.silence.dev/Silence/Silence-Android/pipelines)[![Translation Status](https://translate.silence.dev/widgets/silence/-/svg-badge.svg)](https://translate.silence.dev/projects/silence/)
+# Silence [![Build Status](https://travis-ci.org/SilenceIM/Silence.svg?branch=master)](https://travis-ci.org/SilenceIM/Silence)
 
 [Silence](https://silence.im) (formerly SMSSecure) is an SMS/MMS application that allows you to protect your privacy while communicating with friends.
 
@@ -25,11 +25,21 @@ Silence focuses on SMS and MMS. This fork aims to:
 * Drop Google services dependencies (push messages are not available in Silence)
 * Integrate upstream bugfixes and patches from TextSecure
 
+## Migrating from TextSecure to Silence
+
+* In TextSecure, export a plaintext backup. Warning: the backup will **not** be encrypted.
+* Install Silence.
+* In Silence, import the plaintext backup (this will import the TextSecure backup if no Silence backup is found).
+* If TextSecure v2.6.4 or earlier is installed, update or uninstall it so it doesn't conflict (can cause errors with key exchanges).
+* Enjoy Silence!
+
+Note: You will have to start new secured sessions with your contacts.
+
 # Contributing
 
-See [CONTRIBUTING.md](https://git.silence.dev/Silence/Silence-Android/blob/master/CONTRIBUTING.md) for how to contribute code, translations, or bug reports.
+See [CONTRIBUTING.md](https://github.com/SilenceIM/Silence/blob/master/CONTRIBUTING.md) for how to contribute code, translations, or bug reports.
 
-Instructions on how to setup a development environment and build Silence can be found in [BUILDING.md](https://git.silence.dev/Silence/Silence-Android/blob/master/BUILDING.md).
+Instructions on how to setup a development environment and build Silence can be found in [BUILDING.md](https://github.com/SilenceIM/Silence/blob/master/BUILDING.md).
 
 # Donate
 
@@ -46,7 +56,7 @@ Looking for documentation? Check out the wiki of the original project:
 https://github.com/WhisperSystems/TextSecure/wiki
 
 ## Chat
-Have a question? Want to help out? Join us on Mattermost on [chat.silence.dev](https://chat.silence.dev/), or follow [@SilenceIM](https://twitter.com/SilenceIM) on Twitter or [@silence@mastodon.social](https://mastodon.social/@silence) on Mastodon.
+Have a question? Want to help out? Join our IRC channel: [#Silence on Freenode](https://webchat.freenode.net/?channels=Silence) or follow [@SilenceIM](https://twitter.com/SilenceIM) on Twitter.
 
 # Legal
 ## Cryptography Notice

@@ -74,14 +74,13 @@ public class DatabaseFactory {
   private static final int INTRODUCED_SUBSCRIPTION_ID_VERSION              = 28;
   private static final int INTRODUCED_LAST_SEEN                            = 29;
   private static final int INTRODUCED_NOTIFIED                             = 30;
-  private static final int INTRODUCED_DIGEST                               = 31;
 
   /*
    * Yes, INTRODUCED_XMPP_TRANSPORT > DATABASE_VERSION to allow database
    * downgrade when XMPP transport will be included in unstable branch.
    */
-  private static final int INTRODUCED_XMPP_TRANSPORT                       = 32;
-  private static final int DATABASE_VERSION                                = 31;
+  private static final int INTRODUCED_XMPP_TRANSPORT                       = 31;
+  private static final int DATABASE_VERSION                                = 30;
 
   private static final String DATABASE_NAME    = "messages.db";
   private static final Object lock             = new Object();
@@ -94,7 +93,7 @@ public class DatabaseFactory {
   private final EncryptingSmsDatabase encryptingSms;
   private final MmsDatabase mms;
   private final AttachmentDatabase attachments;
-  private final MediaDatabase media;
+  private final ImageDatabase image;
   private final ThreadDatabase thread;
   private final CanonicalAddressDatabase address;
   private final MmsAddressDatabase mmsAddress;
@@ -141,8 +140,8 @@ public class DatabaseFactory {
     return getInstance(context).attachments;
   }
 
-  public static MediaDatabase getMediaDatabase(Context context) {
-    return getInstance(context).media;
+  public static ImageDatabase getImageDatabase(Context context) {
+    return getInstance(context).image;
   }
 
   public static MmsAddressDatabase getMmsAddressDatabase(Context context) {
@@ -171,7 +170,7 @@ public class DatabaseFactory {
     this.encryptingSms               = new EncryptingSmsDatabase(context, databaseHelper);
     this.mms                         = new MmsDatabase(context, databaseHelper);
     this.attachments                 = new AttachmentDatabase(context, databaseHelper);
-    this.media                       = new MediaDatabase(context, databaseHelper);
+    this.image                       = new ImageDatabase(context, databaseHelper);
     this.thread                      = new ThreadDatabase(context, databaseHelper);
     this.address                     = CanonicalAddressDatabase.getInstance(context);
     this.mmsAddress                  = new MmsAddressDatabase(context, databaseHelper);
@@ -565,10 +564,6 @@ public class DatabaseFactory {
 
         db.execSQL("DROP INDEX mms_read_and_thread_id_index");
         db.execSQL("CREATE INDEX IF NOT EXISTS mms_read_and_notified_and_thread_id_index ON mms(read,notified,thread_id)");
-      }
-
-      if (oldVersion < INTRODUCED_DIGEST) {
-        db.execSQL("ALTER TABLE part ADD COLUMN digest BLOB");
       }
 
       db.setTransactionSuccessful();

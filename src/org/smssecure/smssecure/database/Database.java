@@ -25,7 +25,9 @@ import java.util.Set;
 
 public abstract class Database {
 
-  protected static final String ID_WHERE = "_id = ?";
+  protected static final String ID_WHERE              = "_id = ?";
+  private   static final String CONVERSATION_URI      = "content://textsecure/thread/";
+  private   static final String CONVERSATION_LIST_URI = "content://textsecure/conversation-list";
 
   protected       SQLiteOpenHelper databaseHelper;
   protected final Context context;
@@ -40,20 +42,20 @@ public abstract class Database {
       notifyConversationListeners(threadId);
   }
 
-  public void notifyConversationListeners(long threadId) {
-    context.getContentResolver().notifyChange(DatabaseContentProviders.Conversation.getUriForThread(threadId), null);
+  protected void notifyConversationListeners(long threadId) {
+    context.getContentResolver().notifyChange(Uri.parse(CONVERSATION_URI + threadId), null);
   }
 
   protected void notifyConversationListListeners() {
-    context.getContentResolver().notifyChange(DatabaseContentProviders.ConversationList.CONTENT_URI, null);
+    context.getContentResolver().notifyChange(Uri.parse(CONVERSATION_LIST_URI), null);
   }
 
   protected void setNotifyConverationListeners(Cursor cursor, long threadId) {
-    cursor.setNotificationUri(context.getContentResolver(), DatabaseContentProviders.Conversation.getUriForThread(threadId));
+    cursor.setNotificationUri(context.getContentResolver(), Uri.parse(CONVERSATION_URI + threadId));
   }
 
   protected void setNotifyConverationListListeners(Cursor cursor) {
-    cursor.setNotificationUri(context.getContentResolver(), DatabaseContentProviders.ConversationList.CONTENT_URI);
+    cursor.setNotificationUri(context.getContentResolver(), Uri.parse(CONVERSATION_LIST_URI));
   }
 
   public void reset(SQLiteOpenHelper databaseHelper) {

@@ -373,36 +373,10 @@
               android:exported="false"
               android:authorities="org.smssecure.provider.smssecure.mms" />
 
-    <provider android:name=".database.DatabaseContentProviders$Conversation"
-              android:authorities="org.smssecure.smssecure.database.conversation"
-              android:exported="false" />
-
-    <provider android:name=".database.DatabaseContentProviders$ConversationList"
-              android:authorities="org.smssecure.smssecure.database.conversationlist"
-              android:exported="false" />
-
-    <provider android:name=".database.DatabaseContentProviders$Attachment"
-              android:authorities="org.smssecure.smssecure.database.attachment"
-              android:exported="false" />
-
-    <provider android:name=".database.DatabaseContentProviders$Identities"
-              android:authorities="org.smssecure.smssecure.database.identities"
-              android:exported="false" />
-
-    <provider android:name=".database.DatabaseContentProviders$RecipientPreference"
-              android:authorities="org.smssecure.smssecure.database.recipients"
-              android:exported="false" />
-
     <receiver android:name=".service.RegistrationNotifier"
               android:exported="false">
         <intent-filter>
             <action android:name="org.smssecure.smssecure.REGISTRATION_EVENT" />
-        </intent-filter>
-    </receiver>
-
-    <receiver android:name=".notifications.LocaleChangedReceiver">
-        <intent-filter>
-            <action android:name="android.intent.action.LOCALE_CHANGED"/>
         </intent-filter>
     </receiver>
 
@@ -418,24 +392,12 @@
         </intent-filter>
     </receiver>
 
-    <provider android:name="android.support.v4.content.FileProvider"
-              android:authorities="org.smssecure.smssecure.fileprovider"
-              android:exported="false"
-              android:grantUriPermissions="true">
-
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths" />
-
-    </provider>
-
-    <receiver android:name=".service.BootReceiver">
+    <receiver android:enabled="true"
+              android:name=".service.BootReceiver">
         <intent-filter>
-            <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
-            <data android:scheme="package" />
-        </intent-filter>
-
-        <intent-filter>
+            <action android:name="android.intent.action.PACKAGE_REPLACED"/>
             <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            <action android:name="org.smssecure.smssecure.RESTART"/>
+            <data android:scheme="package" />
         </intent-filter>
     </receiver>
 

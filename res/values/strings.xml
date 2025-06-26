@@ -307,8 +307,6 @@
 
     <!-- NotificationMmsMessageRecord -->
     <string name="NotificationMmsMessageRecord_multimedia_message">Multimedia message</string>
-    <string name="NotificationMmsMessageRecord_downloading_mms_message">Downloading MMS message</string>
-    <string name="NotificationMmsMessageRecord_error_downloading_mms_message">Error downloading MMS message, tap to retry</string>
 
     <!-- MessageRecord -->
     <string name="MessageRecord_message_encrypted_with_a_legacy_protocol_version_that_is_no_longer_supported">Received a message encrypted using an old version of Silence that is no longer supported. Please ask the sender to upgrade to the most recent version and resend the message.</string>
@@ -327,14 +325,19 @@
     <string name="PassphrasePromptActivity_watermark_content_description">Silence icon</string>
     <string name="PassphrasePromptActivity_invalid_passphrase_exclamation">Invalid passphrase!</string>
 
-    <!-- ConfirmIdentityDialog -->
-    <string name="ConfirmIdentityDialog_the_signature_on_this_key_exchange_is_different">The
-        identifying key material for %1$s has changed. This could either mean that someone is trying to
-        intercept your communication, or that %2$s simply re-installed Silence and now has a new
-        identity key.
+    <!-- ReceiveKeyActivity -->
+    <string name="ReceiveKeyActivity_the_signature_on_this_key_exchange_is_different">The
+        signature on this key exchange is different than what you\'ve previously received from this
+        contact. This could either mean that someone is trying to intercept your communication, or
+        that this contact simply re-installed Silence and now has a new identity key.
     </string>
-    <string name="ConfirmIdentityDialog_you_may_wish_to_verify_this_contact">You may wish to verify this contact.</string>
-    <string name="ConfirmIdentityDialog_accept">Accept</string>
+    <string name="ReceiveKeyActivity_the_signature_on_this_key_exchange_is_trusted_but">The
+        signature on this key exchange is trusted, but you have the \'automatically complete key
+        exchanges\' setting disabled.
+    </string>
+    <string name="ReceiveKeyActivity_processing">Processing</string>
+    <string name="ReceiveKeyActivity_processing_key_exchange">Processing key exchange…</string>
+    <string name="ConfirmIdentityDialog_you_may_wish_to_verify_this_contact">You should verify the identity of this contact.</string>
 
     <!-- RecipientPreferencesActivity -->
     <string name="RecipientPreferenceActivity_block_this_contact_question">Block this contact?</string>
@@ -446,22 +449,13 @@
     <string name="MessageNotifier_message_received">Message received by %s.</string>
     <string name="MessageNotifier_reply">Reply</string>
 
-    <!-- Notification Channels -->
-    <string name="NotificationChannel_messages">Messages</string>
-    <string name="NotificationChannel_failures">Failures</string>
-    <string name="NotificationChannel_locked_status">Locked status</string>
-    <string name="NotificationChannel_other">Other</string>
-
     <!-- QuickResponseService -->
     <string name="QuickResponseService_quick_response_unavailable_when_Silence_is_locked">Quick response unavailable when Silence is locked!</string>
     <string name="QuickResponseService_problem_sending_message">Problem sending message!</string>
 
     <!-- SingleRecipientNotificationBuilder -->
-    <string name="SingleRecipientNotificationBuilder_silence" translatable="false">Silence</string>
+    <string name="SingleRecipientNotificationBuilder_silence">Silence</string>
     <string name="SingleRecipientNotificationBuilder_new_message">New message</string>
-
-    <!-- VideoPlayer -->
-    <string name="VideoPlayer_error_playing_video">Error playing video</string>
 
     <!-- SubscriptionInfoCompat -->
     <string name="SubscriptionInfoCompat_slot">Slot %1$s</string>
@@ -578,7 +572,7 @@
     <string name="load_more_header__see_full_conversation">See full conversation</string>
 
     <!-- media_overview_activity -->
-    <string name="media_overview_activity__no_media">No media</string>
+    <string name="media_overview_activity__no_images">No images</string>
 
     <!-- message_recipients_list_item -->
     <string name="message_recipients_list_item__verify">VERIFY</string>
@@ -602,6 +596,9 @@
     <string name="recipient_preferences__block">Block</string>
     <string name="recipient_preferences__color">Color</string>
     <string name="recipient_preferences__color_for_this_contact">Color for this contact</string>
+
+    <!-- receive_key_dialog -->
+    <string name="receive_key_activity__complete">Complete</string>
 
     <!-- recipients_panel -->
     <string name="recipients_panel__to"><small>Enter a name or number</small></string>
@@ -630,8 +627,8 @@
     <string name="AndroidManifest__complete_key_exchange">Complete key exchange</string>
     <string name="AndroidManifest__log_submit">Submit debug log</string>
     <string name="AndroidManifest__media_preview">Media preview</string>
-    <string name="AndroidManifest__all_media">All media</string>
-    <string name="AndroidManifest__all_media_named">All media with %1$s</string>
+    <string name="AndroidManifest__media_overview">All images</string>
+    <string name="AndroidManifest__media_overview_named">All images with %1$s</string>
     <string name="AndroidManifest__message_details">Message details</string>
     <string name="AndroidManifest_archived_conversations">Archived conversations</string>
     <string name="AndroidManifest_configure_mms_settings">Configure MMS Settings</string>
@@ -857,7 +854,7 @@
     <string name="conversation__menu_delete_conversation">Delete conversation</string>
     <string name="conversation__menu_archive_conversation">Archive conversation</string>
     <string name="conversation__menu_unarchive_conversation">Unarchive conversation</string>
-    <string name="conversation__menu_view_all_media">All media</string>
+    <string name="conversation__menu_view_media">All images</string>
     <string name="conversation__menu_conversation_settings">Conversation settings</string>
 
     <!-- conversation_popup -->
@@ -912,13 +909,13 @@
     <!-- media_preview -->
     <string name="media_preview__save_title">Save</string>
     <string name="media_preview__forward_title">Forward</string>
-    <string name="media_preview__all_media_title">All media</string>
+    <string name="media_preview__overview_title">All images</string>
 
     <!-- media_overview -->
     <string name="media_overview__save_all">Save all</string>
 
     <!-- media_preview_activity -->
-    <string name="media_preview_activity__media_content_description">Media preview</string>
+    <string name="media_preview_activity__image_content_description">Image preview</string>
 
     <!-- Trimmer -->
     <string name="trimmer__deleting">Deleting…</string>

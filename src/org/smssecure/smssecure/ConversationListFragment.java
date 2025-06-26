@@ -349,8 +349,9 @@ public class ConversationListFragment extends Fragment
                 recipients = getListAdapter().getRecipientsFromThreadId(threadId);
 
                 if (recipients != null) {
+                  int subscriptionId = SubscriptionManagerCompat.getDefaultMessagingSubscriptionId().or(-1);
                   isSingleConversation = recipients.isSingleRecipient() && !recipients.isGroupRecipient();
-                  isSecureDestination  = isSingleConversation && SessionUtil.hasSession(context, masterSecret, recipients.getPrimaryRecipient().getNumber(), recipients.getDefaultSubscriptionId());
+                  isSecureDestination  = isSingleConversation && SessionUtil.hasSession(context, masterSecret, recipients.getPrimaryRecipient().getNumber(), subscriptionId);
 
                   Log.w(TAG, "Number of drafts: " + drafts.size());
                   if (drafts.size() > 1 && !drafts.get(1).getType().equals(DraftDatabase.Draft.TEXT)) {
@@ -385,22 +386,22 @@ public class ConversationListFragment extends Fragment
             private void sendTextDraft(DraftDatabase.Draft draft, long threadId) {
               OutgoingTextMessage message;
               if (isSecureDestination) {
-                message = new OutgoingEncryptedMessage(recipients, draft.getValue(), recipients.getDefaultSubscriptionId());
+                message = new OutgoingEncryptedMessage(recipients, draft.getValue(), -1);
               } else {
-                message = new OutgoingTextMessage(recipients, draft.getValue(), recipients.getDefaultSubscriptionId());
+                message = new OutgoingTextMessage(recipients, draft.getValue(), -1);
               }
               MessageSender.send(context, masterSecret, message, threadId, false);
             }
 
             private void sendMediaDraft(DraftDatabase.Draft draft, long threadId, @Nullable String forcedValue) {
               List<Attachment> attachment = new LinkedList<Attachment>();
-              attachment.add(new UriAttachment(Uri.parse(draft.getValue()), draft.getType() + "/*", AttachmentDatabase.TRANSFER_PROGRESS_DONE, 0));
+              attachment.add(new UriAttachment(Uri.parse(draft.getValue()), draft.getType() + "/*", AttachmentDatabase.TRANSFER_PROGRESS_DONE));
 
               OutgoingMediaMessage message = new OutgoingMediaMessage(recipients,
                                                                       forcedValue != null ? forcedValue : "",
                                                                       attachment,
                                                                       System.currentTimeMillis(),
-                                                                      recipients.getDefaultSubscriptionId(),
+                                                                      -1,
                                                                       ThreadDatabase.DistributionTypes.BROADCAST);
 
               if (isSecureDestination) {

@@ -448,17 +448,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
       for (SubscriptionInfoCompat subscriptionInfo : activeSubscriptions) {
         final int subscriptionId = subscriptionInfo.getSubscriptionId();
-
-        if (SessionUtil.hasSession(this, masterSecret, recipients.getPrimaryRecipient().getNumber(), subscriptionId)) {
-          identitiesMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, subscriptionInfo.getDisplayName())
-                        .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                          @Override
-                          public boolean onMenuItemClick(MenuItem item) {
-                            handleVerifyIdentity(subscriptionId);
-                            return true;
-                          }
-                        });
-        }
+        identitiesMenu.add(Menu.NONE, Menu.NONE, Menu.NONE, subscriptionInfo.getDisplayName())
+                      .setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                          handleVerifyIdentity(subscriptionId);
+                          return true;
+                        }
+                      });
       }
     } else {
       menu.findItem(R.id.menu_verify_identity_dual_sim).setVisible(false);
@@ -513,8 +510,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         }
       }
     } else {
-      menu.findItem(R.id.menu_abort_session_dual_sim).setVisible(false);
-      menu.findItem(R.id.menu_start_secure_session_dual_sim).setVisible(false);
+      menu.findItem(R.id.menu_abort_session).setVisible(false);
     }
   }
 
@@ -1131,9 +1127,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
 
     for (Slide slide : attachmentManager.buildSlideDeck().getSlides()) {
-      if      (slide.hasAudio() && slide.getUri() != null) drafts.add(new Draft(Draft.AUDIO, slide.getUri().toString()));
-      else if (slide.hasVideo() && slide.getUri() != null) drafts.add(new Draft(Draft.VIDEO, slide.getUri().toString()));
-      else if (slide.hasImage() && slide.getUri() != null) drafts.add(new Draft(Draft.IMAGE, slide.getUri().toString()));
+      if      (slide.hasAudio()) drafts.add(new Draft(Draft.AUDIO, slide.getUri().toString()));
+      else if (slide.hasVideo()) drafts.add(new Draft(Draft.VIDEO, slide.getUri().toString()));
+      else if (slide.hasImage()) drafts.add(new Draft(Draft.IMAGE, slide.getUri().toString()));
     }
 
     return drafts;

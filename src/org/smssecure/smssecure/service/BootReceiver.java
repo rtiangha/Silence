@@ -12,8 +12,13 @@ public class BootReceiver extends BroadcastReceiver {
 
   @Override
   public void onReceive(Context context, Intent intent) {
-    Log.w(TAG, "onReceive()");
-    WelcomeActivity.checkForPermissions(context, intent);
+    if((Intent.ACTION_PACKAGE_REPLACED.equals(intent.getAction()) ||
+      Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) &&
+      intent.getData().getSchemeSpecificPart().equals(context.getPackageName()))
+    {
+      Log.w(TAG, "onReceive()");
+      WelcomeActivity.checkForPermissions(context, intent);
+    }
   }
 
 }

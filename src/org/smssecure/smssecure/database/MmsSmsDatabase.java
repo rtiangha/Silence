@@ -56,10 +56,8 @@ public class MmsSmsDatabase extends Database {
                                               AttachmentDatabase.MMS_ID,
                                               AttachmentDatabase.SIZE,
                                               AttachmentDatabase.DATA,
-                                              AttachmentDatabase.THUMBNAIL,
                                               AttachmentDatabase.CONTENT_TYPE,
                                               AttachmentDatabase.CONTENT_LOCATION,
-                                              AttachmentDatabase.DIGEST,
                                               AttachmentDatabase.CONTENT_DISPOSITION,
                                               AttachmentDatabase.NAME,
                                               AttachmentDatabase.TRANSFER_STATE};
@@ -134,10 +132,8 @@ public class MmsSmsDatabase extends Database {
                               AttachmentDatabase.MMS_ID,
                               AttachmentDatabase.SIZE,
                               AttachmentDatabase.DATA,
-                              AttachmentDatabase.THUMBNAIL,
                               AttachmentDatabase.CONTENT_TYPE,
                               AttachmentDatabase.CONTENT_LOCATION,
-                              AttachmentDatabase.DIGEST,
                               AttachmentDatabase.CONTENT_DISPOSITION,
                               AttachmentDatabase.NAME,
                               AttachmentDatabase.TRANSFER_STATE};
@@ -162,10 +158,8 @@ public class MmsSmsDatabase extends Database {
                               AttachmentDatabase.MMS_ID,
                               AttachmentDatabase.SIZE,
                               AttachmentDatabase.DATA,
-                              AttachmentDatabase.THUMBNAIL,
                               AttachmentDatabase.CONTENT_TYPE,
                               AttachmentDatabase.CONTENT_LOCATION,
-                              AttachmentDatabase.DIGEST,
                               AttachmentDatabase.CONTENT_DISPOSITION,
                               AttachmentDatabase.NAME,
                               AttachmentDatabase.TRANSFER_STATE};
@@ -211,13 +205,9 @@ public class MmsSmsDatabase extends Database {
 
     mmsColumnsPresent.add(AttachmentDatabase.ROW_ID);
     mmsColumnsPresent.add(AttachmentDatabase.UNIQUE_ID);
-    mmsColumnsPresent.add(AttachmentDatabase.MMS_ID);
     mmsColumnsPresent.add(AttachmentDatabase.SIZE);
-    mmsColumnsPresent.add(AttachmentDatabase.DATA);
-    mmsColumnsPresent.add(AttachmentDatabase.THUMBNAIL);
     mmsColumnsPresent.add(AttachmentDatabase.CONTENT_TYPE);
     mmsColumnsPresent.add(AttachmentDatabase.CONTENT_LOCATION);
-    mmsColumnsPresent.add(AttachmentDatabase.DIGEST);
     mmsColumnsPresent.add(AttachmentDatabase.CONTENT_DISPOSITION);
     mmsColumnsPresent.add(AttachmentDatabase.NAME);
     mmsColumnsPresent.add(AttachmentDatabase.TRANSFER_STATE);

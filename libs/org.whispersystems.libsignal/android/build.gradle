@@ -1,11 +1,10 @@
 buildscript {
     repositories {
-        google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:2.2.0'
     }
 }
 
@@ -19,6 +18,7 @@ group            = group_info
 
 android {
     compileSdkVersion 21
+    buildToolsVersion "25.0.2"
 
     sourceSets {
         androidTest {

@@ -99,18 +99,13 @@ public abstract class Slide {
     return false;
   }
 
-  public boolean hasPlayOverlay() {
-    return false;
-  }
-
   protected static Attachment constructAttachmentFromUri(@NonNull Context context,
                                                          @NonNull Uri     uri,
                                                          @NonNull String  defaultMime,
-                                                                  long     size,
-                                                                  boolean  hasThumbnail)
+                                                                  long     size)
   {
     Optional<String> resolvedType = Optional.fromNullable(MediaUtil.getMimeType(context, uri));
-    return new UriAttachment(uri, hasThumbnail ? uri : null, resolvedType.or(defaultMime), AttachmentDatabase.TRANSFER_PROGRESS_STARTED, size);
+    return new UriAttachment(uri, resolvedType.or(defaultMime), AttachmentDatabase.TRANSFER_PROGRESS_STARTED, size);
   }
 
   @Override

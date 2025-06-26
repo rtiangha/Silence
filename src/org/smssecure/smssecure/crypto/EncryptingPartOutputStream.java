@@ -21,7 +21,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.InvalidKeyException;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.BadPaddingException;
@@ -41,37 +40,25 @@ import android.util.Log;
 
 public class EncryptingPartOutputStream extends FileOutputStream {
 
-  private static final String TAG = EncryptingPartOutputStream.class.getSimpleName();
-
-  private Cipher        cipher;
-  private Mac           mac;
-  private MessageDigest messageDigest;
-
+  private Cipher cipher;
+  private Mac mac;
   private boolean closed;
-
-  private byte[] digest;
 
   public EncryptingPartOutputStream(File file, MasterSecret masterSecret) throws FileNotFoundException {
     super(file);
 
     try {
-      this.cipher        = initializeCipher();
-      this.mac           = initializeMac();
-      this.messageDigest = MessageDigest.getInstance("SHA256");
-
-      this.cipher.init(Cipher.ENCRYPT_MODE, masterSecret.getEncryptionKey());
-      this.mac.init(masterSecret.getMacKey());
-
-      mac.update(cipher.getIV());
-      messageDigest.update(cipher.getIV());
-
-      super.write(cipher.getIV(), 0, cipher.getIV().length);
-
+      mac    = initializeMac(masterSecret.getMacKey());
+      cipher = initializeCipher(mac, masterSecret.getEncryptionKey());
       closed = false;
     } catch (IOException ioe) {
-      Log.w(TAG, ioe);
+      Log.w("EncryptingPartOutputStream", ioe);
       throw new FileNotFoundException("Couldn't write IV");
-    } catch (InvalidKeyException | NoSuchAlgorithmException e) {
+    } catch (InvalidKeyException e) {
+      throw new AssertionError(e);
+    } catch (NoSuchAlgorithmException e) {
+      throw new AssertionError(e);
+    } catch (NoSuchPaddingException e) {
       throw new AssertionError(e);
     }
   }
@@ -87,7 +74,6 @@ public class EncryptingPartOutputStream extends FileOutputStream {
 
     if (encryptedBuffer != null) {
       mac.update(encryptedBuffer);
-      messageDigest.update(encryptedBuffer);
       super.write(encryptedBuffer, 0, encryptedBuffer.length);
     }
   }
@@ -100,9 +86,6 @@ public class EncryptingPartOutputStream extends FileOutputStream {
         mac.update(encryptedRemainder);
 
         byte[] macBytes = mac.doFinal();
-
-        messageDigest.update(encryptedRemainder);
-        this.digest = messageDigest.digest(macBytes);
 
         super.write(encryptedRemainder, 0, encryptedRemainder.length);
         super.write(macBytes, 0, macBytes.length);
@@ -118,24 +101,22 @@ public class EncryptingPartOutputStream extends FileOutputStream {
     }
   }
 
-  public byte[] getAttachmentDigest() {
-    return digest;
+  private Mac initializeMac(SecretKeySpec key) throws NoSuchAlgorithmException, InvalidKeyException {
+    Mac hmac = Mac.getInstance("HmacSHA1");
+    hmac.init(key);
+
+    return hmac;
   }
 
-  private Mac initializeMac() {
-    try {
-      return Mac.getInstance("HmacSHA1");
-    } catch (NoSuchAlgorithmException e) {
-      throw new AssertionError(e);
-    }
-  }
+  private Cipher initializeCipher(Mac mac, SecretKeySpec key) throws IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException {
+    Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+    cipher.init(Cipher.ENCRYPT_MODE, key);
 
-  private Cipher initializeCipher() {
-    try {
-      return Cipher.getInstance("AES/CBC/PKCS5Padding");
-    } catch (NoSuchAlgorithmException | NoSuchPaddingException e) {
-      throw new AssertionError(e);
-    }
+    byte[] ivBytes = cipher.getIV();
+    mac.update(ivBytes);
+    super.write(ivBytes, 0, ivBytes.length);
+
+    return cipher;
   }
 
 }

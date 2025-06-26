@@ -18,7 +18,6 @@ import org.smssecure.smssecure.mms.AudioSlide;
 import org.smssecure.smssecure.mms.DecryptableStreamUriLoader.DecryptableUri;
 import org.smssecure.smssecure.mms.GifSlide;
 import org.smssecure.smssecure.mms.ImageSlide;
-import org.smssecure.smssecure.mms.MmsSlide;
 import org.smssecure.smssecure.mms.PartAuthority;
 import org.smssecure.smssecure.mms.Slide;
 import org.smssecure.smssecure.mms.VideoSlide;
@@ -29,7 +28,6 @@ import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
 
 public class MediaUtil {
-
   private static final String TAG = MediaUtil.class.getSimpleName();
 
   public static final String IMAGE_PNG         = "image/png";
@@ -38,8 +36,6 @@ public class MediaUtil {
   public static final String AUDIO_AAC         = "audio/aac";
   public static final String AUDIO_UNSPECIFIED = "audio/*";
   public static final String VIDEO_UNSPECIFIED = "video/*";
-
-  public static final String CONTENT_TYPE_OCTET_STREAM = "application/octet-stream";
 
   public static @Nullable ThumbnailData generateThumbnail(Context context, MasterSecret masterSecret, String contentType, Uri uri)
       throws BitmapDecodingException
@@ -87,8 +83,6 @@ public class MediaUtil {
       slide = new VideoSlide(context, attachment);
     } else if (isAudioType(attachment.getContentType())) {
       slide = new AudioSlide(context, attachment);
-    } else if (isMms(attachment.getContentType())) {
-      slide = new MmsSlide(context, attachment);
     }
 
     return slide;
@@ -152,10 +146,6 @@ public class MediaUtil {
 
   public static boolean isVideo(Attachment attachment) {
     return isVideoType(attachment.getContentType());
-  }
-
-  public static boolean isMms(String contentType) {
-    return !TextUtils.isEmpty(contentType) && contentType.trim().equals("application/mms");
   }
 
   public static boolean isGif(String contentType) {

@@ -22,7 +22,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.lang.System;
@@ -51,30 +50,25 @@ public class DecryptingPartInputStream extends FileInputStream {
   private static final int IV_LENGTH  = 16;
   private static final int MAC_LENGTH = 20;
 
-  private Cipher        cipher;
-  private Mac           mac;
-  private MessageDigest digest;
-  private byte[]        theirDigest;
+  private Cipher cipher;
+  private Mac mac;
 
   private boolean done;
   private long totalDataSize;
   private long totalRead;
   private byte[] overflowBuffer;
 
-  public DecryptingPartInputStream(File file, MasterSecret masterSecret, byte[] theirDigest) throws FileNotFoundException {
+  public DecryptingPartInputStream(File file, MasterSecret masterSecret) throws FileNotFoundException {
     super(file);
     try {
       if (file.length() <= IV_LENGTH + MAC_LENGTH)
         throw new FileNotFoundException("Part shorter than crypto overhead!");
 
       done          = false;
-      digest        = initializeDigest();
       mac           = initializeMac(masterSecret.getMacKey());
       cipher        = initializeCipher(masterSecret.getEncryptionKey());
       totalDataSize = file.length() - cipher.getBlockSize() - mac.getMacLength();
       totalRead     = 0;
-
-      this.theirDigest   = theirDigest;
     } catch (InvalidKeyException ike) {
       Log.w(TAG, ike);
       throw new FileNotFoundException("Invalid key!");
@@ -131,12 +125,6 @@ public class DecryptingPartInputStream extends FileInputStream {
       if (!Arrays.equals(ourMac, theirMac))
         throw new IOException("MAC doesn't match! Potential tampering?");
 
-      byte[] ourDigest = digest.digest(ourMac);
-
-      if (theirDigest != null && !MessageDigest.isEqual(ourDigest, theirDigest)) {
-        throw new IOException("Digest doesn't match!");
-      }
-
       done = true;
       return flourish;
     } catch (IllegalBlockSizeException e) {
@@ -180,7 +168,6 @@ public class DecryptingPartInputStream extends FileInputStream {
 
     try {
       mac.update(internalBuffer, 0, read);
-      digest.update(internalBuffer, 0, read);
 
       int outputLen = cipher.getOutputSize(read);
 
@@ -223,18 +210,11 @@ public class DecryptingPartInputStream extends FileInputStream {
     return cipher;
   }
 
-  private MessageDigest initializeDigest()
-    throws NoSuchAlgorithmException
-  {
-    return MessageDigest.getInstance("SHA256");
-  }
-
   private IvParameterSpec readIv(int size) throws IOException {
     byte[] iv = new byte[size];
     readFully(iv);
 
     mac.update(iv);
-    digest.update(iv);
     return new IvParameterSpec(iv);
   }
 

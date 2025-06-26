@@ -10,7 +10,7 @@
 
 <resources>
 
-    <string name="Distribution_title" translatable="false">Silence</string>
+    <string name="Distribution_title">Silence</string>
     <string name="Distribution_tagline">Encrypted SMS/MMS conversations made easy!</string>
     <string name="Distribution_description">Silence is an SMS/MMS application that allows you to protect your privacy while communicating with friends.</string>
     <string name="Distribution_long_description">
@@ -25,10 +25,10 @@
         * Open Source. Silence is Free and Open Source, enabling anyone to verify its security by auditing the code.
 
         Please file any bugs, issues, or feature requests at:
-        https://git.silence.dev/Silence/Silence-Android/issues
+        https://github.com/SilenceIM/Silence/issues
 
         The source code can be found at:
-        https://git.silence.dev/Silence/Silence-Android
+        https://github.com/SilenceIM/Silence
 
         More details:
         https://silence.im

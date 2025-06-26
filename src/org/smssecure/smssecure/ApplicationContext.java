@@ -17,12 +17,8 @@
 package org.smssecure.smssecure;
 
 import android.app.Application;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.util.Log;
-
-import android.support.v4.app.NotificationManagerCompat;
 
 import org.smssecure.smssecure.crypto.PRNGFixes;
 import org.smssecure.smssecure.dependencies.InjectableType;
@@ -30,7 +26,6 @@ import org.smssecure.smssecure.jobs.persistence.EncryptingJobSerializer;
 import org.smssecure.smssecure.jobs.requirements.MasterSecretRequirementProvider;
 import org.smssecure.smssecure.jobs.requirements.MediaNetworkRequirementProvider;
 import org.smssecure.smssecure.jobs.requirements.ServiceRequirementProvider;
-import org.smssecure.smssecure.notifications.NotificationChannels;
 import org.smssecure.smssecure.util.SilencePreferences;
 import org.smssecure.smssecure.util.dualsim.SimChangedReceiver;
 import org.whispersystems.jobqueue.JobManager;
@@ -70,7 +65,6 @@ public class ApplicationContext extends Application implements DependencyInjecto
     initializeLogging();
     initializeJobManager();
     checkSimState();
-    NotificationChannels.create(this);
   }
 
   @Override
