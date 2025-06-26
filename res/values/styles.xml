@@ -8,6 +8,5 @@
     <style name="NoAnimation.Theme.AppCompat.Light.DarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar" />
     <style name="Silence.WelcomeTheme" parent="Theme.AppCompat.Light.NoActionBar" />
     <style name="Silence.LightIntroTheme" parent="Theme.AppCompat.Light.NoActionBar" />
-    <style name="Silence.LightIntroTheme" parent="Theme.AppCompat.Light.NoActionBar" />
     <style name="Silence.LightNoActionBar" parent="Theme.AppCompat.Light.NoActionBar" />
 </resources>
