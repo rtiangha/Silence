@@ -17,9 +17,15 @@ buildscript {
 apply plugin: 'com.android.application'
 apply plugin: 'witness'
 
-
-
-
+repositories {
+    mavenCentral()
+    google()
+    gradlePluginPortal()
+    maven {
+        url "https://artifactory.appodeal.com/appodeal-public/"
+    }
+    mavenLocal()
+}
 
 dependencies {
     implementation "androidx.appcompat:appcompat:1.6.1"
