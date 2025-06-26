@@ -3,7 +3,7 @@
     <string name="RingtonePreference_ringtone_default">Default ringtone</string>
     <string name="RingtonePreference_alarm_sound_default">Default alarm sound</string>
     <string name="RingtonePreference_notification_sound_default">Default notification sound</string>
-    <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">You haven&apos;t set a passphrase yet!</string>
+    <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">You have not set a passphrase yet</string>
     <string name="ApplicationPreferencesActivity_disable_storage_encryption">Disable Storage Encryption?</string>
     <string name="ApplicationPreferencesActivity_warning_this_will_disable_storage_encryption_for_all_messages">Warning: This will disable storage encryption for all messages!</string>
     <string name="ApplicationPreferencesActivity_disable">Disable</string>
