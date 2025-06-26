@@ -2,6 +2,11 @@ pluginManagement {
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
+        maven {
+            url "https://artifactory.appodeal.com/appodeal-public/"
+        }
+        mavenLocal()
     }
 }
 
