@@ -1,3 +1,3 @@
 [submodule "libs/org.greenrobot.eventbus"]
 	path = libs/org.greenrobot.eventbus
-	url = https://github.com/greenrobot/EventBus
+	url = https://github.com/rtiangha/EventBus
