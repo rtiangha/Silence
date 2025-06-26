@@ -93,7 +93,7 @@ android {
     buildToolsVersion '33.0.0'
 
     defaultConfig {
-        applicationId "org.thoughtcrime.securesms"
+        namespace "org.smssecure.smssecure"
         minSdkVersion 19
         targetSdkVersion 33
         versionCode 213
