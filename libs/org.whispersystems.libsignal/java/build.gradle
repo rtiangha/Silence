@@ -4,7 +4,7 @@ sourceCompatibility = 1.17
 targetCompatibility = 1.17
 archivesBaseName = "signal-protocol-java"
 version          = version_number
-group            = group_info
+group            = project.ext.group_info
 
 
 
