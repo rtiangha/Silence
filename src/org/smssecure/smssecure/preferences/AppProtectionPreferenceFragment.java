@@ -115,7 +115,6 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
       TypedArray hmsStyle   = getActivity().obtainStyledAttributes(attributes);
 
       new HmsPickerBuilder().setFragmentManager(getFragmentManager())
-                            .setStyleResId(hmsStyle.getResourceId(0, R.style.BetterPickersDialogFragment_Light))
                             .addHmsPickerDialogHandler(this)
                             .show();
 
@@ -143,7 +142,7 @@ public class AppProtectionPreferenceFragment extends CorrectedPreferenceFragment
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.ApplicationPreferencesActivity_disable_storage_encryption);
         builder.setMessage(R.string.ApplicationPreferencesActivity_warning_this_will_disable_storage_encryption_for_all_messages);
-        builder.setIconAttribute(R.attr.dialog_alert_icon);
+        
         builder.setPositiveButton(R.string.ApplicationPreferencesActivity_disable, new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {

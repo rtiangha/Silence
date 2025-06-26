@@ -3,18 +3,18 @@ package org.smssecure.smssecure.crypto.storage;
 import android.content.Context;
 
 import org.smssecure.smssecure.crypto.MasterSecret;
-import org.whispersystems.libsignal.SignalProtocolAddress;
-import org.whispersystems.libsignal.IdentityKey;
-import org.whispersystems.libsignal.IdentityKeyPair;
-import org.whispersystems.libsignal.InvalidKeyIdException;
-import org.whispersystems.libsignal.state.SignalProtocolStore;
-import org.whispersystems.libsignal.state.IdentityKeyStore;
-import org.whispersystems.libsignal.state.PreKeyRecord;
-import org.whispersystems.libsignal.state.PreKeyStore;
-import org.whispersystems.libsignal.state.SessionRecord;
-import org.whispersystems.libsignal.state.SessionStore;
-import org.whispersystems.libsignal.state.SignedPreKeyRecord;
-import org.whispersystems.libsignal.state.SignedPreKeyStore;
+import org.signal.libsignal_client.SignalProtocolAddress;
+import org.signal.libsignal_client.IdentityKey;
+import org.signal.libsignal_client.IdentityKeyPair;
+import org.signal.libsignal_client.InvalidKeyIdException;
+import org.signal.libsignal_client.state.SignalProtocolStore;
+import org.signal.libsignal_client.state.IdentityKeyStore;
+import org.signal.libsignal_client.state.PreKeyRecord;
+import org.signal.libsignal_client.state.PreKeyStore;
+import org.signal.libsignal_client.state.SessionRecord;
+import org.signal.libsignal_client.state.SessionStore;
+import org.signal.libsignal_client.state.SignedPreKeyRecord;
+import org.signal.libsignal_client.state.SignedPreKeyStore;
 
 import java.util.List;
 

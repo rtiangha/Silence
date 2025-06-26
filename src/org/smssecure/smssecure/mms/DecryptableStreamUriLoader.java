@@ -30,7 +30,7 @@ public class DecryptableStreamUriLoader implements StreamModelLoader<Decryptable
 
     @Override
     public ModelLoader<DecryptableUri, InputStream> build(@NonNull Context context, @NonNull Registry registry) {
-      return new DecryptableStreamUriLoader(context);
+      return new DecryptableStreamUriLoader(glide.getContext());
     }
 
     @Override

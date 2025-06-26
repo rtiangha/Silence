@@ -108,7 +108,7 @@ public class ZoomingImageView extends FrameLayout {
          .diskCacheStrategy(DiskCacheStrategy.NONE)
          .dontTransform()
          .dontAnimate()
-         .into(new GlideDrawableImageViewTarget(imageView) {
+         .into(new DrawableImageViewTarget(imageView) {
            @Override protected void setResource(Drawable resource) {
              super.setResource(resource);
              imageViewAttacher.update();

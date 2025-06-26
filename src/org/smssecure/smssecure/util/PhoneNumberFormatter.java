@@ -21,7 +21,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber;
 
-import org.whispersystems.libsignal.logging.Log;
+import org.signal.libsignal_client.logging.Log;
 
 import java.util.Locale;
 

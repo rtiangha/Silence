@@ -32,7 +32,7 @@ public class AttachmentStreamUriLoader implements StreamModelLoader<AttachmentMo
   public static class Factory implements ModelLoaderFactory<AttachmentModel, InputStream> {
 
     @Override
-    public StreamModelLoader<AttachmentModel> build(Context context, GenericLoaderFactory factories) {
+    public ModelLoader<AttachmentModel, InputStream> build(@NonNull Context context, @NonNull Registry registry) {
       return new AttachmentStreamUriLoader(context);
     }
 

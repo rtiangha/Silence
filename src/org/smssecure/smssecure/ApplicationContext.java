@@ -36,8 +36,8 @@ import org.smssecure.smssecure.util.dualsim.SimChangedReceiver;
 import org.whispersystems.jobqueue.JobManager;
 import org.whispersystems.jobqueue.dependencies.DependencyInjector;
 import org.whispersystems.jobqueue.requirements.NetworkRequirementProvider;
-import org.whispersystems.libsignal.logging.SignalProtocolLoggerProvider;
-import org.whispersystems.libsignal.util.AndroidSignalProtocolLogger;
+import org.signal.libsignal_client.logging.SignalProtocolLoggerProvider;
+import org.signal.libsignal_client.util.AndroidSignalProtocolLogger;
 
 import java.security.Security;
 
@@ -74,9 +74,10 @@ public class ApplicationContext extends Application implements DependencyInjecto
   }
 
   @Override
+  @Override
   public void injectDependencies(Object object) {
     if (object instanceof InjectableType) {
-      objectGraph.inject(object);
+      component.inject(object);
     }
   }
 

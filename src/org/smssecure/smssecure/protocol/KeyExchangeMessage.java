@@ -2,16 +2,16 @@ package org.smssecure.smssecure.protocol;
 
 import com.google.protobuf.ByteString;
 
-import org.whispersystems.libsignal.IdentityKey;
-import org.whispersystems.libsignal.InvalidKeyException;
-import org.whispersystems.libsignal.InvalidMessageException;
-import org.whispersystems.libsignal.InvalidVersionException;
-import org.whispersystems.libsignal.LegacyMessageException;
-import org.whispersystems.libsignal.protocol.CiphertextMessage;
-import org.whispersystems.libsignal.protocol.SignalProtos;
-import org.whispersystems.libsignal.ecc.Curve;
-import org.whispersystems.libsignal.ecc.ECPublicKey;
-import org.whispersystems.libsignal.util.ByteUtil;
+import org.signal.libsignal_client.IdentityKey;
+import org.signal.libsignal_client.InvalidKeyException;
+import org.signal.libsignal_client.InvalidMessageException;
+import org.signal.libsignal_client.InvalidVersionException;
+import org.signal.libsignal_client.LegacyMessageException;
+import org.signal.libsignal_client.protocol.CiphertextMessage;
+import org.signal.libsignal_client.protocol.SignalProtos;
+import org.signal.libsignal_client.ecc.Curve;
+import org.signal.libsignal_client.ecc.ECPublicKey;
+import org.signal.libsignal_client.util.ByteUtil;
 
 import java.io.IOException;
 

@@ -9,11 +9,11 @@ import org.smssecure.smssecure.crypto.MasterSecret;
 import org.smssecure.smssecure.recipients.Recipient;
 import org.smssecure.smssecure.recipients.RecipientFactory;
 import org.smssecure.smssecure.util.Conversions;
-import org.whispersystems.libsignal.SignalProtocolAddress;
-import org.whispersystems.libsignal.InvalidMessageException;
-import org.whispersystems.libsignal.state.SessionRecord;
-import org.whispersystems.libsignal.state.SessionState;
-import org.whispersystems.libsignal.state.SessionStore;
+import org.signal.libsignal_client.SignalProtocolAddress;
+import org.signal.libsignal_client.InvalidMessageException;
+import org.signal.libsignal_client.state.SessionRecord;
+import org.signal.libsignal_client.state.SessionState;
+import org.signal.libsignal_client.state.SessionStore;
 
 import java.io.File;
 import java.io.FileInputStream;

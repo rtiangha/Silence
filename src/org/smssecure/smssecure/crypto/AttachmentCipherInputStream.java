@@ -1,8 +1,8 @@
 package org.smssecure.smssecure.crypto;
 
 import org.smssecure.smssecure.util.Util;
-import org.whispersystems.libsignal.InvalidMacException;
-import org.whispersystems.libsignal.InvalidMessageException;
+import org.signal.libsignal_client.InvalidMacException;
+import org.signal.libsignal_client.InvalidMessageException;
 import java.util.Optional;
 
 import java.io.File;

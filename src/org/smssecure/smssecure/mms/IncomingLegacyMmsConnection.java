@@ -46,16 +46,17 @@ public class IncomingLegacyMmsConnection extends LegacyMmsConnection implements 
     super(context);
   }
 
-  private HttpUriRequest constructRequest(Apn contentApn, boolean useProxy) throws IOException {
-    HttpGetHC4 request = new HttpGetHC4(contentApn.getMmsc());
-    for (Header header : getBaseHeaders()) {
-      request.addHeader(header);
-    }
+  private Request constructRequest(Apn contentApn, boolean useProxy) throws IOException {
+    Request.Builder requestBuilder = new Request.Builder().url(contentApn.getMmsc());
+    requestBuilder.headers(getBaseHeaders());
+
     if (useProxy) {
-      HttpHost proxy = new HttpHost(contentApn.getProxy(), contentApn.getPort());
-      request.setConfig(RequestConfig.custom().setProxy(proxy).build());
+      // OkHttp handles proxy settings at the client level, not per request.
+      // This method will need to be refactored to pass the proxy through the client.
+      // For now, we'll just build the request without explicit proxy settings here.
+      // The proxy will be set in the OkHttpClient in the execute method of LegacyMmsConnection.
     }
-    return request;
+    return requestBuilder.build();
   }
 
   @Override

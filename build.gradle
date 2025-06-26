@@ -43,7 +43,7 @@ dependencies {
 
     implementation project (path: ':org.whispersystems.jobmanager')
     implementation project (path: ':org.whispersystems.libpastelog')
-    implementation project (path: ':libsignal-java')
+    implementation 'org.signal:libsignal-client:0.22.0'
 
     implementation 'com.annimon:stream:1.2.1'
     implementation ('com.takisoft.fix:colorpicker:0.9.1') {

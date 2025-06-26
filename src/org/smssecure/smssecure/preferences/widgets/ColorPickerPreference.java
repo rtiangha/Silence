@@ -59,10 +59,8 @@ public class ColorPickerPreference extends DialogPreference {
     this(context, attrs, defStyleAttr, 0);
   }
 
-  @SuppressLint("RestrictedApi")
   public ColorPickerPreference(Context context, AttributeSet attrs) {
-    this(context, attrs, TypedArrayUtils.getAttr(context, R.attr.dialogPreferenceStyle,
-                                                 android.R.attr.dialogPreferenceStyle));
+    super(context, attrs);
   }
 
   public ColorPickerPreference(Context context) {

@@ -21,9 +21,9 @@ import android.util.Log;
 
 import org.smssecure.smssecure.util.Hex;
 import org.smssecure.smssecure.util.Util;
-import org.whispersystems.libsignal.InvalidKeyException;
-import org.whispersystems.libsignal.ecc.Curve;
-import org.whispersystems.libsignal.ecc.ECPublicKey;
+import org.signal.libsignal_client.InvalidKeyException;
+import org.signal.libsignal_client.ecc.Curve;
+import org.signal.libsignal_client.ecc.ECPublicKey;
 import org.smssecure.smssecure.util.Conversions;
 
 import java.security.MessageDigest;

@@ -128,14 +128,14 @@ public class ThumbnailView extends FrameLayout {
 
     if      (slide.getThumbnailUri() != null) buildThumbnailGlideRequest(slide, masterSecret).into(image);
     else if (slide.hasPlaceholder())          buildPlaceholderGlideRequest(slide).into(image);
-    else                                      Glide.clear(image);
+    else                                      Glide.with(getContext()).clear(image);
   }
 
   public void setImageResource(@NonNull MasterSecret masterSecret, @NonNull Uri uri) {
     if (transferControls.isPresent()) getTransferControls().setVisibility(View.GONE);
 
     Glide.with(getContext()).load(new DecryptableUri(masterSecret, uri))
-         .crossFade()
+         .transition(DrawableTransitionOptions.withCrossFade())
          .transform(new RoundedCorners(getContext(), true, radius, backgroundColorHint))
          .into(image);
   }
@@ -169,7 +169,7 @@ public class ThumbnailView extends FrameLayout {
   private GenericRequestBuilder buildThumbnailGlideRequest(@NonNull Slide slide, @NonNull MasterSecret masterSecret) {
     @SuppressWarnings("ConstantConditions")
     DrawableRequestBuilder<DecryptableUri> builder = Glide.with(getContext()).load(new DecryptableUri(masterSecret, slide.getThumbnailUri()))
-                                                                             .crossFade()
+                                                                             .transition(DrawableTransitionOptions.withCrossFade())
                                                                              .transform(new RoundedCorners(getContext(), true, radius, backgroundColorHint));
 
     if (slide.isInProgress()) return builder;

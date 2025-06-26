@@ -40,12 +40,12 @@ import org.smssecure.smssecure.sms.OutgoingKeyExchangeMessage;
 import org.smssecure.smssecure.sms.OutgoingTextMessage;
 import org.smssecure.smssecure.util.Base64;
 import org.smssecure.smssecure.util.ResUtil;
-import org.whispersystems.libsignal.SignalProtocolAddress;
-import org.whispersystems.libsignal.state.IdentityKeyStore;
-import org.whispersystems.libsignal.state.PreKeyStore;
-import org.whispersystems.libsignal.state.SessionRecord;
-import org.whispersystems.libsignal.state.SessionStore;
-import org.whispersystems.libsignal.state.SignedPreKeyStore;
+import org.signal.libsignal_client.SignalProtocolAddress;
+import org.signal.libsignal_client.state.IdentityKeyStore;
+import org.signal.libsignal_client.state.PreKeyStore;
+import org.signal.libsignal_client.state.SessionRecord;
+import org.signal.libsignal_client.state.SessionStore;
+import org.signal.libsignal_client.state.SignedPreKeyStore;
 
 import java.util.List;
 

@@ -30,8 +30,8 @@ import org.smssecure.smssecure.util.dualsim.DualSimUtil;
 import org.smssecure.smssecure.util.NumberUtil;
 import org.smssecure.smssecure.util.SilencePreferences;
 import org.whispersystems.jobqueue.JobParameters;
-import org.whispersystems.libsignal.NoSessionException;
-import org.whispersystems.libsignal.UntrustedIdentityException;
+import org.signal.libsignal_client.NoSessionException;
+import org.signal.libsignal_client.UntrustedIdentityException;
 
 import java.util.ArrayList;
 

@@ -95,10 +95,8 @@ public class RingtonePreference extends DialogPreference {
     this(context, attrs, defStyleAttr, 0);
   }
 
-  @SuppressLint("RestrictedApi")
   public RingtonePreference(Context context, AttributeSet attrs) {
-    this(context, attrs, TypedArrayUtils.getAttr(context, R.attr.dialogPreferenceStyle,
-                                                 android.R.attr.dialogPreferenceStyle));
+    super(context, attrs);
   }
 
   public RingtonePreference(Context context) {

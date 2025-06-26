@@ -8,10 +8,10 @@ import org.smssecure.smssecure.crypto.SessionUtil;
 import org.smssecure.smssecure.database.DatabaseFactory;
 import org.smssecure.smssecure.recipients.RecipientFactory;
 import org.smssecure.smssecure.util.SilencePreferences;
-import org.whispersystems.libsignal.IdentityKey;
-import org.whispersystems.libsignal.IdentityKeyPair;
-import org.whispersystems.libsignal.SignalProtocolAddress;
-import org.whispersystems.libsignal.state.IdentityKeyStore;
+import org.signal.libsignal_client.IdentityKey;
+import org.signal.libsignal_client.IdentityKeyPair;
+import org.signal.libsignal_client.SignalProtocolAddress;
+import org.signal.libsignal_client.state.IdentityKeyStore;
 
 public class SilenceIdentityKeyStore implements IdentityKeyStore {
 

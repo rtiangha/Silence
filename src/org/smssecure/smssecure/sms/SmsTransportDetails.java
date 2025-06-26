@@ -21,7 +21,7 @@ import android.util.Log;
 
 import org.smssecure.smssecure.protocol.WirePrefix;
 import org.smssecure.smssecure.util.Base64;
-import org.whispersystems.libsignal.protocol.CiphertextMessage;
+import org.signal.libsignal_client.protocol.CiphertextMessage;
 
 import java.io.IOException;
 

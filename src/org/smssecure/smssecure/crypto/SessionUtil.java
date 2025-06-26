@@ -9,8 +9,8 @@ import org.smssecure.smssecure.crypto.storage.SilenceSessionStore;
 import org.smssecure.smssecure.recipients.Recipient;
 import org.smssecure.smssecure.util.dualsim.SubscriptionInfoCompat;
 import org.smssecure.smssecure.util.dualsim.SubscriptionManagerCompat;
-import org.whispersystems.libsignal.SignalProtocolAddress;
-import org.whispersystems.libsignal.state.SessionStore;
+import org.signal.libsignal_client.SignalProtocolAddress;
+import org.signal.libsignal_client.state.SessionStore;
 
 import java.util.List;
 import java.util.LinkedList;

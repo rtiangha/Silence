@@ -5,12 +5,12 @@ import android.util.Log;
 
 import org.smssecure.smssecure.crypto.MasterCipher;
 import org.smssecure.smssecure.crypto.MasterSecret;
-import org.whispersystems.libsignal.InvalidKeyIdException;
-import org.whispersystems.libsignal.InvalidMessageException;
-import org.whispersystems.libsignal.state.SignedPreKeyRecord;
-import org.whispersystems.libsignal.state.SignedPreKeyStore;
-import org.whispersystems.libsignal.state.PreKeyRecord;
-import org.whispersystems.libsignal.state.PreKeyStore;
+import org.signal.libsignal_client.InvalidKeyIdException;
+import org.signal.libsignal_client.InvalidMessageException;
+import org.signal.libsignal_client.state.SignedPreKeyRecord;
+import org.signal.libsignal_client.state.SignedPreKeyStore;
+import org.signal.libsignal_client.state.PreKeyRecord;
+import org.signal.libsignal_client.state.PreKeyStore;
 import org.smssecure.smssecure.util.Conversions;
 
 import java.io.File;

@@ -18,7 +18,7 @@ import org.smssecure.smssecure.notifications.MessageNotifier;
 import org.smssecure.smssecure.service.SmsDeliveryListener;
 import org.smssecure.smssecure.util.SilencePreferences;
 import org.whispersystems.jobqueue.JobParameters;
-import org.whispersystems.libsignal.state.SessionStore;
+import org.signal.libsignal_client.state.SessionStore;
 
 public class SmsSentJob extends MasterSecretJob {
 

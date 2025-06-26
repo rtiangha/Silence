@@ -24,11 +24,11 @@ import android.util.Log;
 
 import org.smssecure.smssecure.util.Base64;
 import org.smssecure.smssecure.util.Util;
-import org.whispersystems.libsignal.InvalidKeyException;
-import org.whispersystems.libsignal.ecc.Curve;
-import org.whispersystems.libsignal.ecc.ECKeyPair;
-import org.whispersystems.libsignal.ecc.ECPrivateKey;
-import org.whispersystems.libsignal.ecc.ECPublicKey;
+import org.signal.libsignal_client.InvalidKeyException;
+import org.signal.libsignal_client.ecc.Curve;
+import org.signal.libsignal_client.ecc.ECKeyPair;
+import org.signal.libsignal_client.ecc.ECPrivateKey;
+import org.signal.libsignal_client.ecc.ECPublicKey;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;

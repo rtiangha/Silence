@@ -22,7 +22,7 @@ public class ContactPhotoUriLoader implements StreamModelLoader<ContactPhotoUri>
 
     @Override
     public ModelLoader<ContactPhotoUri, InputStream> build(@NonNull Context context, @NonNull Registry registry) {
-      return new ContactPhotoUriLoader(context);
+      return new ContactPhotoUriLoader(glide.getContext());
     }
 
     @Override

@@ -27,12 +27,9 @@ import android.util.Log;
 import com.google.android.mms.pdu_alt.PduParser;
 import com.google.android.mms.pdu_alt.SendConf;
 
-import org.apache.http.Header;
-import org.apache.http.HttpHost;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpPostHC4;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.entity.ByteArrayEntityHC4;
+import okhttp3.MediaType;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import org.smssecure.smssecure.transport.UndeliverableMessageException;
 
 import java.io.IOException;

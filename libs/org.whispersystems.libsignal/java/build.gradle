@@ -13,6 +13,11 @@ group            = group_info
 
 
 sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', 'build/generated/source/protobuf/main/java']
+        }
+    }
     test {
         java {
             srcDirs = ['src/test/java/', project(':tests').file('src/test/java')]
@@ -20,9 +25,24 @@ sourceSets {
     }
 }
 
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.25.1'
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option 'lite'
+                }
+            }
+        }
+    }
+}
+
 dependencies {
     implementation "org.whispersystems:curve25519-java:${curve25519_version}"
-    implementation 'com.google.protobuf:protobuf-java:3.21.12'
+    implementation 'com.google.protobuf:protobuf-java:3.25.1'
 
     
 
