@@ -3,10 +3,5 @@
     <style name="WidgetContainer">
         <item name="android:background">#00000000</item>
     </style>
-    <style name="Silence.LightTheme" parent="Theme.AppCompat.Light.NoActionBar" />
-    <style name="Silence.LightTheme.Popup" parent="Theme.AppCompat.Light.Dialog" />
-    <style name="NoAnimation.Theme.AppCompat.Light.DarkActionBar" parent="Theme.AppCompat.Light.DarkActionBar" />
-    <style name="Silence.WelcomeTheme" parent="Theme.AppCompat.Light.NoActionBar" />
-    <style name="Silence.LightIntroTheme" parent="Theme.AppCompat.Light.NoActionBar" />
-    <style name="Silence.LightNoActionBar" parent="Theme.AppCompat.Light.NoActionBar" />
+    
 </resources>
