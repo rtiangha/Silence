@@ -3,7 +3,7 @@
     <declare-styleable name="ColorPickerPreference">
         <attr name="colors" format="reference" />
         <attr name="colorDescriptions" format="reference" />
-        <attr name="currentColor" format="color" />
+        
         <attr name="columns" format="integer" />
         <attr name="colorSize" format="integer" />
         <attr name="sortColors" format="boolean" />
