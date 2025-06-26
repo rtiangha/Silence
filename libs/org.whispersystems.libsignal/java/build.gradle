@@ -6,10 +6,7 @@ archivesBaseName = "signal-protocol-java"
 version          = version_number
 group            = group_info
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
+
 
 sourceSets {
     test {
