@@ -101,8 +101,8 @@ android {
         applicationId "org.thoughtcrime.securesms"
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 212
-        versionName "0.15.16"
+        versionCode 213
+        versionName "0.16.13"
 
         vectorDrawables.useSupportLibrary = true
     }
