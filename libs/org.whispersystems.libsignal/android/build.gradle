@@ -1,5 +1,9 @@
 apply plugin: 'com.android.library'
 
+ext.version_number     = "2.7.1"
+ext.group_info         = "org.whispersystems"
+ext.curve25519_version = "0.5.0"
+
 archivesBaseName = "signal-protocol-android"
 version          = version_number
 group            = group_info
