@@ -2,7 +2,7 @@ package org.smssecure.smssecure;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.ListPopupWindow;
+import androidx.appcompat.widget.ListPopupWindow;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;

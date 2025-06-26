@@ -18,7 +18,7 @@
 package org.smssecure.smssecure.contacts;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatMultiAutoCompleteTextView;
+import androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView;
 import android.telephony.PhoneNumberUtils;
 import android.text.Annotation;
 import android.text.Editable;
@@ -48,7 +48,7 @@ import java.util.List;
 /**
  * Provide UI for editing the recipients of multi-media messages.
  */
-public class RecipientsEditor extends AppCompatMultiAutoCompleteTextView {
+public class RecipientsEditor extends androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView {
     private int mLongPressedPosition = -1;
     private final RecipientsEditorTokenizer mTokenizer;
     private char mLastSeparator = ',';

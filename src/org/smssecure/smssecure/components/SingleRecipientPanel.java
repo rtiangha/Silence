@@ -24,7 +24,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 
-import org.smssecure.smssecure.R;
+import org.thoughtcrime.securesms.R;
 import org.smssecure.smssecure.contacts.ContactAccessor;
 import org.smssecure.smssecure.contacts.RecipientsAdapter;
 import org.smssecure.smssecure.contacts.RecipientsEditor;

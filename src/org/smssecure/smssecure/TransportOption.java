@@ -1,7 +1,7 @@
 package org.smssecure.smssecure;
 
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 
 import org.smssecure.smssecure.util.CharacterCalculator;
 import org.smssecure.smssecure.util.CharacterCalculator.CharacterState;
@@ -23,7 +23,7 @@ public class TransportOption {
   private final @NonNull Type                   type;
   private final @NonNull String                 composeHint;
   private final @NonNull CharacterCalculator    characterCalculator;
-  private final @NonNull Optional<CharSequence> simName;
+  private final @NonNull java.util.Optional<CharSequence> simName;
   private final @NonNull Optional<Integer>      simSubscriptionId;
 
   public TransportOption(@NonNull  Type type,

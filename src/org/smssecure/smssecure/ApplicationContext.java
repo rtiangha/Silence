@@ -22,7 +22,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.util.Log;
 
-import android.support.v4.app.NotificationManagerCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import org.smssecure.smssecure.crypto.PRNGFixes;
 import org.smssecure.smssecure.dependencies.InjectableType;

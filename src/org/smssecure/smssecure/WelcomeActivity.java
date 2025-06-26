@@ -9,8 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.NotificationCompat;
+import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
 
 import org.smssecure.smssecure.BaseActionBarActivity;
 import org.smssecure.smssecure.notifications.NotificationChannels;
