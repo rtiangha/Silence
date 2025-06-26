@@ -6,7 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.util.Log;
@@ -19,7 +19,7 @@ import org.smssecure.smssecure.notifications.NotificationChannels;
 import org.smssecure.smssecure.R;
 import org.smssecure.smssecure.util.ServiceUtil;
 import org.smssecure.smssecure.util.SilencePreferences;
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 import java.io.File;
 import java.util.LinkedList;

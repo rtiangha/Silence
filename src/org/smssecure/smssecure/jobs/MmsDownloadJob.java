@@ -47,7 +47,7 @@ import org.whispersystems.libsignal.InvalidMessageException;
 import org.whispersystems.libsignal.LegacyMessageException;
 import org.whispersystems.libsignal.NoSessionException;
 import org.whispersystems.libsignal.UntrustedIdentityException;
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

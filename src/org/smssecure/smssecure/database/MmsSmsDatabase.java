@@ -26,7 +26,7 @@ import androidx.annotation.Nullable;
 
 import org.smssecure.smssecure.crypto.MasterSecret;
 import org.smssecure.smssecure.database.model.MessageRecord;
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -18,7 +18,7 @@ import org.whispersystems.libsignal.UntrustedIdentityException;
 import org.whispersystems.libsignal.protocol.CiphertextMessage;
 import org.whispersystems.libsignal.protocol.SignalMessage;
 import org.whispersystems.libsignal.state.SignalProtocolStore;
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 import java.io.IOException;
 

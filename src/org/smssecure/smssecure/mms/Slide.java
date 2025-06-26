@@ -28,7 +28,7 @@ import org.smssecure.smssecure.attachments.UriAttachment;
 import org.smssecure.smssecure.database.AttachmentDatabase;
 import org.smssecure.smssecure.util.MediaUtil;
 import org.smssecure.smssecure.util.Util;
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 public abstract class Slide {
 

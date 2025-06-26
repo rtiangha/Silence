@@ -21,7 +21,7 @@ import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import androidx.annotation.LayoutRes;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;

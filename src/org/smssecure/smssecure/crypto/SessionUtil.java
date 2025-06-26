@@ -2,7 +2,7 @@ package org.smssecure.smssecure.crypto;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.os.Build;
 
 import org.smssecure.smssecure.crypto.storage.SilenceSessionStore;

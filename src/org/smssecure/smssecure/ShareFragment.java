@@ -22,7 +22,7 @@ import android.os.Bundle;
 import androidx.fragment.app.ListFragment;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
-import android.support.v4.widget.CursorAdapter;
+import androidx.cursoradapter.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

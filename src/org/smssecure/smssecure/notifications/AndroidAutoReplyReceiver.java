@@ -38,7 +38,7 @@ import org.smssecure.smssecure.recipients.Recipients;
 import org.smssecure.smssecure.sms.MessageSender;
 import org.smssecure.smssecure.sms.OutgoingEncryptedMessage;
 import org.smssecure.smssecure.sms.OutgoingTextMessage;
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 import java.util.LinkedList;
 import java.util.List;

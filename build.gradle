@@ -34,17 +34,12 @@ dependencies {
     implementation 'pl.tajchert:waitingdots:0.1.0'
     implementation 'com.melnykov:floatingactionbutton:1.3.0'
     implementation 'com.google.zxing:android-integration:3.1.0'
-    implementation ('com.davemorrissey.labs:subsampling-scale-image-view:3.6.0') {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.6.0'
 
-    implementation 'com.squareup.dagger:dagger:1.2.2'
-    annotationProcessor 'com.squareup.dagger:dagger-compiler:1.2.2'
-    compileOnly 'com.squareup.dagger:dagger-compiler:1.2.2'
+    implementation 'com.google.dagger:dagger:2.48'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.48'
 
-    implementation ("com.doomonafireball.betterpickers:library:1.5.3") {
-        exclude group: 'com.android.support', module: 'support-v4'
-    }
+    implementation "com.doomonafireball.betterpickers:library:1.5.3"
 
     implementation project (path: ':org.whispersystems.jobmanager')
     implementation project (path: ':org.whispersystems.libpastelog')
@@ -93,7 +88,7 @@ dependencyVerification {
 }
 
 android {
-    namespace "org.thoughtcrime.securesms"
+    namespace "org.smssecure.smssecure"
     compileSdkVersion 33
     buildToolsVersion '33.0.0'
 

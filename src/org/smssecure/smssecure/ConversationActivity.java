@@ -36,7 +36,7 @@ import android.os.Bundle;
 import android.provider.Browser;
 import android.provider.ContactsContract;
 import androidx.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import androidx.core.view.WindowCompat;
 import androidx.appcompat.app.AlertDialog;
 import android.text.Editable;
@@ -124,7 +124,7 @@ import org.smssecure.smssecure.util.concurrent.SettableFuture;
 import org.smssecure.smssecure.util.dualsim.SubscriptionInfoCompat;
 import org.smssecure.smssecure.util.dualsim.SubscriptionManagerCompat;
 import org.whispersystems.libsignal.InvalidMessageException;
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 import java.io.IOException;
 import java.util.List;

@@ -40,7 +40,7 @@ import org.whispersystems.libsignal.LegacyMessageException;
 import org.whispersystems.libsignal.NoSessionException;
 import org.whispersystems.libsignal.StaleKeyExchangeException;
 import org.whispersystems.libsignal.UntrustedIdentityException;
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 import java.io.IOException;
 import java.util.List;

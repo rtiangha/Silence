@@ -14,7 +14,7 @@ import org.smssecure.smssecure.color.MaterialColor;
 import org.smssecure.smssecure.database.DatabaseContentProviders;
 import org.smssecure.smssecure.recipients.Recipients;
 import org.smssecure.smssecure.util.Util;
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 import java.util.Arrays;
 

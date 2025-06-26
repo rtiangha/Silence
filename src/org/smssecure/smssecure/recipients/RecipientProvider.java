@@ -36,7 +36,7 @@ import org.smssecure.smssecure.database.RecipientPreferenceDatabase.RecipientsPr
 import org.smssecure.smssecure.util.LRUCache;
 import org.smssecure.smssecure.util.ListenableFutureTask;
 import org.smssecure.smssecure.util.Util;
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 import java.io.IOException;
 import java.util.Arrays;

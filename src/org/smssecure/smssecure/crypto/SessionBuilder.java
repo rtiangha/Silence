@@ -29,7 +29,7 @@ import org.whispersystems.libsignal.state.SignalProtocolStore;
 import org.whispersystems.libsignal.state.SignedPreKeyStore;
 import org.whispersystems.libsignal.util.KeyHelper;
 import org.whispersystems.libsignal.util.Medium;
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 public class SessionBuilder {
 

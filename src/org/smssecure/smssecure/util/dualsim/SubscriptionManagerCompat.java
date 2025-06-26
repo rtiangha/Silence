@@ -3,7 +3,7 @@ package org.smssecure.smssecure.util.dualsim;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -11,7 +11,7 @@ import android.telephony.TelephonyManager;
 
 import org.smssecure.smssecure.util.ServiceUtil;
 
-import org.whispersystems.libsignal.util.guava.Optional;
+import java.util.Optional;
 
 import java.util.LinkedList;
 import java.util.List;
