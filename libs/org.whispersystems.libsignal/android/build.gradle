@@ -21,7 +21,7 @@ android {
 
 dependencies {
     implementation "org.whispersystems:curve25519-android:${curve25519_version}"
-    implementation (project(':java')) {
+    implementation (project(':libsignal-java')) {
         exclude group: 'org.whispersystems', module: 'curve25519-java'
     }
 }
