@@ -89,8 +89,8 @@ dependencyVerification {
 
 android {
     namespace "org.smssecure.smssecure"
-    compileSdkVersion 33
-    buildToolsVersion '33.0.0'
+    compileSdkVersion 35
+    buildToolsVersion '35.0.0'
 
     defaultConfig {
         namespace "org.smssecure.smssecure"
