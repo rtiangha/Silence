@@ -12,11 +12,7 @@ buildscript {
 apply plugin: 'com.android.application'
 apply plugin: 'witness'
 
-repositories {
-    mavenCentral()
-    google()
-    mavenLocal()
-}
+
 
 
 
