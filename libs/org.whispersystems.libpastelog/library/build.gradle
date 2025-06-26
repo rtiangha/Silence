@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
 
+ext.version_number     = "1.1.2"
+ext.group_info         = "org.whispersystems"
+
 archivesBaseName = "libpastelog"
 version          = version_number
 group            = group_info
