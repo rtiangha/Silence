@@ -43,7 +43,7 @@ dependencies {
 
     implementation project (path: ':org.whispersystems.jobmanager')
     implementation project (path: ':org.whispersystems.libpastelog')
-    implementation project (path: ':org.whispersystems.libsignal')
+    implementation project (path: ':libsignal-java')
 
     implementation 'com.annimon:stream:1.2.1'
     implementation ('com.takisoft.fix:colorpicker:0.9.1') {
@@ -88,7 +88,7 @@ dependencyVerification {
 }
 
 android {
-    namespace "org.smssecure.smssecure"
+    namespace "org.thoughtcrime.securesms"
     compileSdkVersion 33
     buildToolsVersion '33.0.0'
 

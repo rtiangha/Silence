@@ -29,7 +29,7 @@ public class DecryptableStreamUriLoader implements StreamModelLoader<Decryptable
   public static class Factory implements ModelLoaderFactory<DecryptableUri, InputStream> {
 
     @Override
-    public StreamModelLoader<DecryptableUri> build(Context context, GenericLoaderFactory factories) {
+    public ModelLoader<DecryptableUri, InputStream> build(@NonNull Context context, @NonNull Registry registry) {
       return new DecryptableStreamUriLoader(context);
     }
 

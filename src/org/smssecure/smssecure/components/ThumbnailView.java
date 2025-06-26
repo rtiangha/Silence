@@ -178,7 +178,6 @@ public class ThumbnailView extends FrameLayout {
 
   private GenericRequestBuilder buildPlaceholderGlideRequest(Slide slide) {
     return Glide.with(getContext()).load(slide.getPlaceholderRes(getContext().getTheme()))
-                                   .asBitmap()
                                    .fitCenter();
   }
 

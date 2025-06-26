@@ -109,7 +109,7 @@ public class ZoomingImageView extends FrameLayout {
          .dontTransform()
          .dontAnimate()
          .into(new GlideDrawableImageViewTarget(imageView) {
-           @Override protected void setResource(GlideDrawable resource) {
+           @Override protected void setResource(Drawable resource) {
              super.setResource(resource);
              imageViewAttacher.update();
            }

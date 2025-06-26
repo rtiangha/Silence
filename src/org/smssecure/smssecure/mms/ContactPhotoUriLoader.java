@@ -5,9 +5,8 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.load.data.DataFetcher;
-import com.bumptech.glide.load.model.GenericLoaderFactory;
-import com.bumptech.glide.load.model.ModelLoaderFactory;
-import com.bumptech.glide.load.model.stream.StreamModelLoader;
+import com.bumptech.glide.load.model.ModelLoader;
+import com.bumptech.glide.Registry;
 
 import org.smssecure.smssecure.mms.ContactPhotoUriLoader.ContactPhotoUri;
 
@@ -22,7 +21,7 @@ public class ContactPhotoUriLoader implements StreamModelLoader<ContactPhotoUri>
   public static class Factory implements ModelLoaderFactory<ContactPhotoUri, InputStream> {
 
     @Override
-    public StreamModelLoader<ContactPhotoUri> build(Context context, GenericLoaderFactory factories) {
+    public ModelLoader<ContactPhotoUri, InputStream> build(@NonNull Context context, @NonNull Registry registry) {
       return new ContactPhotoUriLoader(context);
     }
 
