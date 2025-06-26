@@ -22,7 +22,7 @@ dependencies {
     implementation "androidx.gridlayout:gridlayout:1.0.0"
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation 'se.emilsjolander:stickylistheaders:2.7.0'
+    
     implementation 'com.jpardogo.materialtabstrip:library:1.0.9'
     implementation 'info.guardianproject.trustedintents:trustedintents:0.2'
     implementation 'org.apache.httpcomponents:httpclient-android:4.3.5'

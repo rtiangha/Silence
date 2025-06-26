@@ -3,7 +3,7 @@
     <string name="RingtonePreference_ringtone_default">Default ringtone</string>
     <string name="RingtonePreference_alarm_sound_default">Default alarm sound</string>
     <string name="RingtonePreference_notification_sound_default">Default notification sound</string>
-    <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">You haven't set a passphrase yet!</string>
+    <string name="ApplicationPreferenceActivity_you_havent_set_a_passphrase_yet">You haven&apos;t set a passphrase yet!</string>
     <string name="ApplicationPreferencesActivity_disable_storage_encryption">Disable Storage Encryption?</string>
     <string name="ApplicationPreferencesActivity_warning_this_will_disable_storage_encryption_for_all_messages">Warning: This will disable storage encryption for all messages!</string>
     <string name="ApplicationPreferencesActivity_disable">Disable</string>
@@ -23,4 +23,16 @@
     <string name="preferences__request_keyboard_to_disable_personalized_learning">Request keyboard to disable personalized learning</string>
     <string name="preferences_app_protection__blocked_contacts">Blocked Contacts</string>
     <string name="preferences__privacy">Privacy</string>
+    <string name="AndroidManifest_configure_mms_settings">Configure MMS Settings</string>
+    <string name="app_name">Silence</string>
+    <string name="AndroidManifest_archived_conversations">Archived Conversations</string>
+    <string name="AndroidManifest__message_details">Message Details</string>
+    <string name="AndroidManifest__create_passphrase">Create Passphrase</string>
+    <string name="AndroidManifest__enter_passphrase">Enter Passphrase</string>
+    <string name="AndroidManifest__select_contacts">Select Contacts</string>
+    <string name="AndroidManifest__public_identity_key">Public Identity Key</string>
+    <string name="AndroidManifest__change_passphrase">Change Passphrase</string>
+    <string name="AndroidManifest__verify_identity">Verify Identity</string>
+    <string name="AndroidManifest__log_submit">Log Submit</string>
+    <string name="AndroidManifest__media_preview">Media Preview</string>
 </resources>
