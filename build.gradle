@@ -101,7 +101,7 @@ android {
 
     defaultConfig {
         namespace "org.smssecure.smssecure"
-        minSdkVersion 19
+        minSdkVersion 21 
         targetSdkVersion 35
         versionCode 213
         versionName "0.16.13"
