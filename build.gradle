@@ -3,6 +3,10 @@ buildscript {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven {
+            url "https://artifactory.appodeal.com/appodeal-public/"
+        }
+        mavenLocal()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.7.2'
