@@ -36,7 +36,7 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.pnikosis:materialish-progress:1.7'
     implementation project (':org.greenrobot.eventbus')
-    implementation 'pl.tajchert:waitingdots:0.6.1'
+    implementation 'com.github.tajchert:waitingdots:0.6.1'
     implementation 'com.melnykov:floatingactionbutton:1.3.0'
     implementation 'com.google.zxing:android-integration:3.3.0'
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
