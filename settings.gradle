@@ -6,6 +6,7 @@ pluginManagement {
         maven {
             url "https://artifactory.appodeal.com/appodeal-public/"
         }
+        maven { url 'https://jitpack.io' }
         mavenLocal()
     }
 }
@@ -19,6 +20,7 @@ dependencyResolutionManagement {
         maven {
             url "https://artifactory.appodeal.com/appodeal-public/"
         }
+        maven { url 'https://jitpack.io' }
         mavenLocal()
     }
 }
