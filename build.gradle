@@ -36,7 +36,7 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.pnikosis:materialish-progress:1.7'
     implementation project (':org.greenrobot.eventbus')
-    implementation 'pj.tajchert:waitingdots:0.2.0'
+    implementation 'pl.tajchert:waitingdots:0.2.0'
     implementation 'com.melnykov:floatingactionbutton:1.3.0'
     implementation 'com.google.zxing:android-integration:3.3.0'
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
@@ -45,7 +45,7 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.56.2'
 
     implementation "com.github.BoD:android-switch-backport:v2.0.1"
-    implementation "com.doomonafireball.betterpickers:library:1.6.0"
+    implementation "com.doomonafireball.betterpickers:library:1.4.2"
 
     implementation project (path: ':org.whispersystems.jobmanager')
     implementation project (path: ':org.whispersystems.libpastelog')
