@@ -44,8 +44,9 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.56.2'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.56.2'
 
-    implementation "com.github.BoD:android-switch-backport:v2.0.1"
-    implementation "com.doomonafireball.betterpickers:library:1.4.2"
+    implementation ("com.doomonafireball.betterpickers:library:1.6.0") {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
 
     implementation project (path: ':org.whispersystems.jobmanager')
     implementation project (path: ':org.whispersystems.libpastelog')
